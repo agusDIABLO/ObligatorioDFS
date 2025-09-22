@@ -1,0 +1,28 @@
+{
+  "name": "obligatoriodfs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+   "scripts": {
+    "start": "node --watch ./src/app.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "redis": "node --watch ./src/config/redis-config.mjs",
+    "mongo": "node --watch ./src/config/mongo-config.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.1",
+    "morgan": "^1.10.1",
+    "redis": "^5.8.2",
+    "xss": "^1.0.15"
+  }
+}
