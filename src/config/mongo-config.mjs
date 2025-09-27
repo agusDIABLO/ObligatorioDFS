@@ -4,7 +4,7 @@ import 'dotenv/config';
 const{MONGO_URL, MONGO_PORT, MONGO_DB, MONGO_BD_IN_USE, MONGO_LOCAL, MONGO_ATLAS, MONGO_ATLAS_URI} = process.env;
 let mongoUri;
 
-if (MONGO_BD_IN_USE === 'atlas') {
+if (MONGO_BD_IN_USE == 'atlas') {
     mongoUri = MONGO_ATLAS_URI;
 } else {
     mongoUri = `mongodb://${MONGO_URL}:${MONGO_PORT}/${MONGO_DB}`;

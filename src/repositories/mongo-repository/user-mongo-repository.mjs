@@ -1,4 +1,4 @@
-import User from '../../models/user.mjs';
+import User from "../../model/user.mjs";
 
 
 const userMongoRepository = {
