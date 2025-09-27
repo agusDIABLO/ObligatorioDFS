@@ -1,21 +1,20 @@
 import mongoose from "mongoose";
-import { baseConstant } from "../constants/base-constants.mjs";
 import 'dotenv/config';
 
-const{MONGO_URL, MONGO_PORT, MONGO_DB, MONGO_BD_IN_USE, MONGO_LOCAL, MONGO_ATLAS} = process.env;
-let MONGO_ATLAS_URI;
+const{MONGO_URL, MONGO_PORT, MONGO_DB, MONGO_BD_IN_USE, MONGO_LOCAL, MONGO_ATLAS, MONGO_ATLAS_URI} = process.env;
+let mongoUri;
 
-if (MONGO_BD_IN_USE == baseConstant.MONGO) {
-    MONGO_ATLAS_URI = `mongodb://${MONGO_URL}:${MONGO_PORT}/${MONGO_DB}`;
+if (MONGO_BD_IN_USE === 'atlas') {
+    mongoUri = MONGO_ATLAS_URI;
 } else {
-    MONGO_ATLAS_URI = `mongodb://${MONGO_URL}:${MONGO_PORT}/${MONGO_DB}`;
+    mongoUri = `mongodb://${MONGO_URL}:${MONGO_PORT}/${MONGO_DB}`;
 }
 
 
 
 export const connectMongo = async () => {
     try {
-       await mongoose.connect(MONGO_ATLAS_URI, {})
+       await mongoose.connect(mongoUri, {})
         console.log('Levanto Mongo')
     } catch (err) {
         console.log('Hubo un error en la conexion de mongo', err);
