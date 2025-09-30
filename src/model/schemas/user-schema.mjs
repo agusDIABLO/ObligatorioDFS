@@ -18,6 +18,6 @@ const userSchema = new mongoose.Schema({
 });
 
     //indice email unico y ascendente
-    userSchema.index({ email: 1 }, { unique: true });
+    userSchema.index({ email: 1 });
 
     export default userSchema;
