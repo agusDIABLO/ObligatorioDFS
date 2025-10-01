@@ -12,6 +12,12 @@ const userMongoRepository = {
         } catch (error) {
             console.log('No se pudo crear el usuario en mongo', error)
         }
+    },
+
+
+    async getUserByEmail(data) {
+        console.log('data', data)
+        return User.findOne(({ email: "roberto5@example.com" }));
     }
 
 }

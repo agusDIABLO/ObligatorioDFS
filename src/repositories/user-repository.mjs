@@ -4,7 +4,7 @@ import "dotenv/config";
 
 let userRepository;
 
-if (process.env.MONGO_BD_IN_USE ==   baseConstant.MONGO) {
+if (process.env.DB_TYPE == baseConstant.MONGO) {
     userRepository = userMongoRepository;
 }
 

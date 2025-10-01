@@ -7,11 +7,28 @@ POST http://localhost:3000/api/v1/signup
 Content-Type: application/json
 
 {
-  "name": "Roberto Carlos Segundo",
-  "email": "roberto2@example.com",
+  "name": "Roberto Carlos Quinto",
+  "email": "roberto5@example.com",
   "password": "12345678",
   "phone": "1234567890"
 }
+
+### Login - Login usuario
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+  "email": "roberto5@example.com",
+  "password": "12345678"
+}
+# > {% 
+# // Parseamos JSON y guardamos token globalmente
+# const body = response.json(); 
+# client.global.set("token", body.token); 
+# %}
+
+
+
 
 
 

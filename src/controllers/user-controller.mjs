@@ -38,6 +38,7 @@ export const loginUser = async (req, res) => {
             res.status(200).json({token});
         }
     } catch (error) {
+        console.error(error);
         res.status(500).json({error: 'No se pudo iniciar sesión'});
     } 
 }
