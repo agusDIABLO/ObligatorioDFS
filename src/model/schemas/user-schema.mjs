@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
         match: [/.+@.+\..+/, 'Por favor ingresa un email válido']},
     phone: {type: Number, required: true},
     password: {type: String, required: true},
-    role: {type: String, enum: ['customer', 'admin', 'barber'], default: 'customer'},
+    role: {type: [String], enum: ['customer', 'admin', 'barber'], default: ['customer']},
     plan: {type: String, enum: ['plus', 'premium'], default: 'plus'},
     limitReservations: {type: Number, default: 11} 
     },

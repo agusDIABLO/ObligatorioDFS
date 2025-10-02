@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import "dotenv/config";
 import { validateAuth } from '../validations/validation-user.mjs';
 
-const {PASSWORD_JWT} = process.env;
+const {JWT_SECRET} = process.env;
 
 
 export const authMiddleware = (req, res, next) => {
@@ -18,9 +18,15 @@ export const authMiddleware = (req, res, next) => {
             return res.status(401).json({error: 'No se proporcionó el token de autenticación'});
         }   
 
-        const decoded = jwt.verify(token, PASSWORD_JWT);
- 
-        const {error, value} = validateAuth.validate(decoded, {abortEarly: false});
+        const decoded = jwt.verify(token, JWT_SECRET);
+        const payloadToValidate = {
+            id: decoded.id,
+            email: decoded.email,
+            role: decoded.role
+                                    };
+
+        const {error, value} = validateAuth.validate(payloadToValidate, {abortEarly: false});
+       //const {error, value} = validateAuth.validate(decoded, {abortEarly: false});
 
         if (error) {
             return res.status(401).json({errors: error.details.map(d => d.message)});

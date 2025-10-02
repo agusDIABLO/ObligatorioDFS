@@ -1,4 +1,4 @@
-import categoryMongoRepository from './category-mongo-repository.mjs';
+import categoryMongoRepository from '../repositories/mongo-repository/category-mongo-repository.mjs';   
 import { baseConstant } from '../constants/base-constants.mjs';
 import 'dotenv/config';     
 

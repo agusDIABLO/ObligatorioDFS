@@ -4,7 +4,8 @@ import Joi from "joi";
 export const validateAuth = Joi.object({
     id: Joi.string().required(),
     email: Joi.string().regex(/.+@.+\..+/).required(),
-    iat: Joi.number().integer()
+    role: Joi.array().items(Joi.string().valid('customer', 'admin', 'barber')).required()
+    //iat: Joi.number().integer() probe sacarle el iat
 });
 
 

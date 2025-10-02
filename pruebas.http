@@ -1,3 +1,20 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Prueba de vida
 get http://localhost:3000/
 
@@ -18,7 +35,7 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "roberto5@example.com",
+  "email": "roberto4@example.com",
   "password": "12345678"
 }
 # > {% 
@@ -28,7 +45,14 @@ Content-Type: application/json
 # %}
 
 
+### New Category - Crear nueva categoria
+POST http://localhost:3000/api/v1/categories HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGQ4YmZlNmI4OWFhMTk1ODU1NDhlNyIsImVtYWlsIjoicm9iZXJ0bzRAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTQzNDQ0MiwiZXhwIjoxNzU5NDM4MDQyfQ.1XHwN6LJfu2TbNOcX1kz4NW3PZK-DaPrfuf-24S8Eg4
 
+{
+    "name": "categoria prueba 1"
+}
 
 
 
