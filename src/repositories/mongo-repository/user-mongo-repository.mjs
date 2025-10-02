@@ -17,7 +17,7 @@ const userMongoRepository = {
 
     async getUserByEmail(data) {
         console.log('data', data)
-        return User.findOne(({ email: "roberto5@example.com" }));
+        return User.findOne(({ email: data }));
     }
 
 }

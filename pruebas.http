@@ -35,7 +35,7 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "roberto5@example.com",
+  "email": "roberto3@example.com",
   "password": "12345678"
 }
 # > {% 
@@ -48,10 +48,10 @@ Content-Type: application/json
 ### New Category - Crear nueva categoria
 POST http://localhost:3000/api/v1/categories HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGQ4YmZlNmI4OWFhMTk1ODU1NDhlNyIsImVtYWlsIjoicm9iZXJ0bzRAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTQzNDQ0MiwiZXhwIjoxNzU5NDM4MDQyfQ.1XHwN6LJfu2TbNOcX1kz4NW3PZK-DaPrfuf-24S8Eg4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGQ4YTMxODcwNDI3ODFlYmJmMmExNSIsImVtYWlsIjoicm9iZXJ0bzNAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTQ0MjU5NSwiZXhwIjoxNzU5NDQ2MTk1fQ.FsYjMo7jtCrvoO0htb6ArtkBn7Z7U97EE5y_6J_Zp4U
 
 {
-    "name": "categoria prueba 1"
+    "name": "categoria prueba 2 postman"
 }
 
 
