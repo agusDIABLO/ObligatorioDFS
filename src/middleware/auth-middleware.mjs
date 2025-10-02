@@ -19,14 +19,14 @@ export const authMiddleware = (req, res, next) => {
         }   
 
         const decoded = jwt.verify(token, JWT_SECRET);
-        const payloadToValidate = {
-            id: decoded.id,
-            email: decoded.email,
-            role: decoded.role
-                                    };
+        //const payloadToValidate = {
+            //id: decoded.id,
+            //email: decoded.email,
+           // role: decoded.role
+                                   // };
 
-        const {error, value} = validateAuth.validate(payloadToValidate, {abortEarly: false});
-       //const {error, value} = validateAuth.validate(decoded, {abortEarly: false});
+        //const {error, value} = validateAuth.validate(payloadToValidate, {abortEarly: false});
+        const {error, value} = validateAuth.validate(decoded, {abortEarly: false});
 
         if (error) {
             return res.status(401).json({errors: error.details.map(d => d.message)});

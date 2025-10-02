@@ -11,7 +11,7 @@ const routes = express.Router();
 
 routes.use(authMiddleware);
 
-routes.post("/", validateRoleMiddleware("admin"), validateRequest(validateCreateCategory, reqValidate.BODY), createCategory);
+routes.post("/", validateRoleMiddleware('admin'), validateRequest(validateCreateCategory, reqValidate.BODY), createCategory);
 
 
 
