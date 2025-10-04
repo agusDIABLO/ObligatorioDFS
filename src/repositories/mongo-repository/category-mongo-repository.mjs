@@ -13,7 +13,18 @@ const categoryMongoRepository = {
         } catch (error) {
             console.log('No se pudo crear la categoria en mongo', error)
         }   
-    }   
+    },
+
+    
+    async getCategoryById(id) {
+        try {
+            const category = await Category.findById(id);
+            return category;
+        } catch (error) {
+            console.log('No se pudo obtener la categoria por id en mongo', error)
+        }
+    }
+
 
 }
 

@@ -1,4 +1,4 @@
-import Service from "../model/service.mjs";
+import Service from "../../model/service.mjs";
 
 
 const serviceMongoRepository = {

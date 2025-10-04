@@ -1,22 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Prueba de vida
 get http://localhost:3000/
+
 
 
 ### Signup - Crear nuevo usuario
@@ -25,17 +9,19 @@ Content-Type: application/json
 
 {
   "name": "Roberto Carlos Quinto",
-  "email": "roberto5@example.com",
+  "email": "roberto6@example.com",
   "password": "12345678",
   "phone": "1234567890"
 }
+
+
 
 ### Login - Login usuario
 POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "roberto3@example.com",
+  "email": "roberto6@example.com",
   "password": "12345678"
 }
 # > {% 
@@ -45,14 +31,31 @@ Content-Type: application/json
 # %}
 
 
+
 ### New Category - Crear nueva categoria
 POST http://localhost:3000/api/v1/categories HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGQ4YTMxODcwNDI3ODFlYmJmMmExNSIsImVtYWlsIjoicm9iZXJ0bzNAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTQ0MjU5NSwiZXhwIjoxNzU5NDQ2MTk1fQ.FsYjMo7jtCrvoO0htb6ArtkBn7Z7U97EE5y_6J_Zp4U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTQ1MTE1MiwiZXhwIjoxNzU5NDU0NzUyfQ.fkGYhxMsJzgrMMfjNkjYN7mYbeWcSAsm-2qJuh5fDHw
 
 {
-    "name": "categoria prueba 2 postman"
+    "name": "categoria prueba 3"
 }
 
 
 
+### GetCategoryById - Obtener categoria por ID
+GET http://localhost:3000/api/v1/categories/68dee93dcdd5a8fc4541b391 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTU0OTQxOSwiZXhwIjoxNzU5NTUzMDE5fQ.jLthvklH0tVegV07InY0-H3zbEcfj7Ws7Gjozs6Vk5M
+
+
+### New Service - Crear nuevo servicio
+POST http://localhost:3000/api/v1/services HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTU0OTQxOSwiZXhwIjoxNzU5NTUzMDE5fQ.jLthvklH0tVegV07InY0-H3zbEcfj7Ws7Gjozs6Vk5M
+
+{
+    "name": "Servicio de prueba 3 vsc",
+    "duration": 60,
+    "price": 1500,
+    "categoryId": "68dee93dcdd5a8fc4541b391"
+}

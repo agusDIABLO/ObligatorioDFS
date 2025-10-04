@@ -1,4 +1,4 @@
-import serviceMongoRepository from "./mongo/service-mongo-repository.mjs";
+import serviceMongoRepository from "../repositories/mongo-repository/service-mongo-repository.mjs";
 import { baseConstant } from "../constants/base-constants.mjs";
 import "dotenv/config";
 
