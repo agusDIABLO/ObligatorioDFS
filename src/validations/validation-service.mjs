@@ -7,3 +7,8 @@ export const validateCreateService = Joi.object({
     price: Joi.number().required(),
     categoryId: Joi.required()
 });
+
+
+export const validateServiceById = Joi.object({
+    id: Joi.required()
+});

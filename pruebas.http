@@ -44,18 +44,26 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZ
 
 
 ### GetCategoryById - Obtener categoria por ID
-GET http://localhost:3000/api/v1/categories/68dee93dcdd5a8fc4541b391 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTU0OTQxOSwiZXhwIjoxNzU5NTUzMDE5fQ.jLthvklH0tVegV07InY0-H3zbEcfj7Ws7Gjozs6Vk5M
+GET http://localhost:3000/api/v1/categories/68def45360e32e30cfdbe482 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTYyMTM1MSwiZXhwIjoxNzU5NjI0OTUxfQ.eGkDXasN3HNWRt97bKcov6doQ98Ynoj-wV8N3gDWjDU
+
 
 
 ### New Service - Crear nuevo servicio
 POST http://localhost:3000/api/v1/services HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTU0OTQxOSwiZXhwIjoxNzU5NTUzMDE5fQ.jLthvklH0tVegV07InY0-H3zbEcfj7Ws7Gjozs6Vk5M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTU5NzQwMiwiZXhwIjoxNzU5NjAxMDAyfQ.BP0HqKsfiMswsn8TENwPEG9MIrprbbr2oocfsiHj5uc
 
 {
-    "name": "Servicio de prueba 3 vsc",
-    "duration": 60,
-    "price": 1500,
-    "categoryId": "68dee93dcdd5a8fc4541b391"
+    "name": "Servicio de prueba 7 vsc",
+    "duration": 40,
+    "price": 600,
+    "categoryId": "68def45360e32e30cfdbe48"
 }
+
+
+### GetServiceById - Obtener servicio por ID
+GET http://localhost:3000/api/v1/services/68e098d03af275745948b59a HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTYyNzkyMSwiZXhwIjoxNzU5NjMxNTIxfQ.0UIQs5VpgKOIJd0mDbfKEitRIolvle_XUFojSYO1iQw
+
+
