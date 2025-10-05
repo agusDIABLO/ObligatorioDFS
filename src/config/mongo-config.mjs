@@ -8,10 +8,9 @@ const{MONGO_URL, MONGO_PORT, MONGO_DB, MONGO_BD_IN_USE, MONGO_LOCAL, MONGO_ATLAS
 let mongoUri;
 
 if (MONGO_BD_IN_USE == 'atlas') {
-    mongoUri = `mongodb+srv://${MONGO_ATLAS_USER}:${MONGO_ATLAS_PASS}@cluster0.onnghq6.mongodb.net/?retryWrites=true&w=majority&appName=barberiaObli`;
+    mongoUri = MONGO_ATLAS_URI;
 } else {
-    // mongoUri = `mongodb://${MONGO_URL}:${MONGO_PORT}/${MONGO_DB}`;
-    mongoUri = `mongodb+srv://${MONGO_ATLAS_USER}:${MONGO_ATLAS_PASS}@cluster0.onnghq6.mongodb.net/?retryWrites=true&w=majority&appName=barberiaObli`;
+    mongoUri = `mongodb://${MONGO_URL}:${MONGO_PORT}/${MONGO_DB}`;
 }
 
 
@@ -23,7 +22,6 @@ export async function connectMongo() {
         // Se intenta conectar usando Mongoose con opciones recomendadas
         await mongoose.connect(mongoUri, {
             serverSelectionTimeoutMS: 10000,
-            dbName: MONGO_DB,
         });
 
         // Si la conexión es exitosa, imprime mensaje en consola
