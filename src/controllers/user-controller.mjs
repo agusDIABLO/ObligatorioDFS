@@ -42,3 +42,29 @@ export const loginUser = async (req, res) => {
         res.status(500).json({error: 'No se pudo iniciar sesión'});
     } 
 }
+
+
+export const updateUserPlan = async (req, res, next) => {
+    try {
+        const _id = req.params.id;  
+        const {plan} = req.body;
+        const user = await userRepository.getUserById(_id);
+
+        if (!user) {
+            return res.status(404).json({error: 'Usuario no encontrado'});
+        }
+
+        if (user.plan != plan) {
+            user.plan = plan;
+            const userActualizado = await userRepository.updateUser(_id, user);
+            return res.status(200).json({User: userActualizado});
+        } else {
+            return res.status(400).json({error: `El usuario ya tiene el plan ${plan}`});
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error: 'No se pudo actualizar el plan del usuario'});
+    }
+}
+
+

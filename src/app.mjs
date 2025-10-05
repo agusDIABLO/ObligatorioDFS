@@ -5,6 +5,7 @@ import { connectRedis } from "./config/redis-config.mjs";
 import v1Publicas from "./routes/v1/public.mjs";
 import v1Categorias from "./routes/v1/categories.mjs";
 import v1Servicios from "./routes/v1/services.mjs";
+import v1Usuarios from "./routes/v1/user.mjs";
 import { xssSanitizer } from "./middleware/sanitizer-middleware.mjs";
 
 
@@ -33,6 +34,13 @@ app.use("/api/v1/categories", v1Categorias);
 
 // RUTAS DE SERVICIOS
 app.use("/api/v1/services", v1Servicios);
+
+
+
+// RUTAS DE USUARIOS
+app.use("/api/v1/users", v1Usuarios);
+
+
 
 
 app.get("/", (req, res) => {

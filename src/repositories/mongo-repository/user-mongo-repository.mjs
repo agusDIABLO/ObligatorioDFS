@@ -18,7 +18,37 @@ const userMongoRepository = {
     async getUserByEmail(data) {
         console.log('data', data)
         return User.findOne(({ email: data }));
-    }
+    },
+
+
+    async getUserById(id) {
+        try {
+            const user = await User.findById(id);
+            if (user) {
+                delete user._doc.password;
+            }
+            return user;
+        } catch (error) {
+            console.log('Error al obtener el usuario por ID en mongo', error);
+        }
+    },
+
+
+    async updateUser(id, data) {
+        try {
+            const userActualizado = await User.findByIdAndUpdate(id, data, { new: true });
+            if (userActualizado) {
+                delete userActualizado._doc.password;
+            }
+            return userActualizado;
+        } catch (error) {
+            console.log('Error al actualizar el usuario en mongo', error);
+        }
+    },
+
+
+    
+
 
 }
 

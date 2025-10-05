@@ -1,3 +1,4 @@
+import e from "express";
 import Joi from "joi";
 
 
@@ -22,4 +23,13 @@ export const validateSignup = Joi.object({
 export const validateLogin = Joi.object({
     email: Joi.string().regex(/.+@.+\..+/).required(),
     password: Joi.string().min(6).max(20).required()
+});
+
+
+export const validateUpdateUser = Joi.object({
+    plan: Joi.string().valid('plus', 'premium')
+});
+
+export const validateUpdateUserId = Joi.object({
+    id: Joi.required()
 });
