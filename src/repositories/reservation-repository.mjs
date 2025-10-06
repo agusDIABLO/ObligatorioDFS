@@ -1,4 +1,4 @@
-import reservationMongoRepository from "../repositories/mongo/reservation-mongo-repository.mjs";
+import reservationMongoRepository from "../repositories/mongo-repository/reservation-mongo-repository.mjs";
 import { baseConstant } from "../constants/base-constants.mjs";
 import "dotenv/config"; 
 

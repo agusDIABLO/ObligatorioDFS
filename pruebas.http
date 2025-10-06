@@ -21,7 +21,7 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "roberto2@example.com",
+  "email": "roberto3@example.com",
   "password": "12345678"
 }
 # > {% 
@@ -52,27 +52,41 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZ
 ### New Service - Crear nuevo servicio
 POST http://localhost:3000/api/v1/services HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDllYzQ0ZGFjZjA0OTRhNTc1NDIyYyIsImVtYWlsIjoicm9iZXJ0bzJAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTYzNDMwNywiZXhwIjoxNzU5NjM3OTA3fQ.cq1Qf0dLppqAwmIFdUzbhLINQxq0t-zzVgg1rksm5VA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTFlMzBiMGM5MDEzMzI1YzRhOTBlYiIsImVtYWlsIjoiZXdpbnMyNEBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5NjM5ODI4LCJleHAiOjE3NTk2NDM0Mjh9.3oxp4Xgk0TtEEAUuRaJ6Xk845zQnnVUjqnkHcxiusds
 
 {
-    "name": "Servicio de prueba 8 vsc",
+    "name": "Servicio de prueba 12 vsc",
     "duration": 40,
     "price": 600,
-    "categoryId": "68def45360e32e30cfdbe48"
+    "categoryId": "68dee9d460e32e30cfdbe47f"
 }
 
 
 ### GetServiceById - Obtener servicio por ID
-GET http://localhost:3000/api/v1/services/68e098d03af275745948b59a HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDllYzQ0ZGFjZjA0OTRhNTc1NDIyYyIsImVtYWlsIjoicm9iZXJ0bzJAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTYzNDMwNywiZXhwIjoxNzU5NjM3OTA3fQ.cq1Qf0dLppqAwmIFdUzbhLINQxq0t-zzVgg1rksm5VA
+GET http://localhost:3000/api/v1/services/68e1f94064ecd818c0d397fe HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTFlMzBiMGM5MDEzMzI1YzRhOTBlYiIsImVtYWlsIjoiZXdpbnMyNEBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5NjM5ODI4LCJleHAiOjE3NTk2NDM0Mjh9.3oxp4Xgk0TtEEAUuRaJ6Xk845zQnnVUjqnkHcxiusds
 
 
 
 ### Update User Plan - Actualizar plan de usuario
-PATCH http://localhost:3000/api/v1/users/68d9ec44dacf0494a575422c/plan HTTP/1.1
+PATCH http://localhost:3000/api/v1/users/68e1e30b0c9013325c4a90eb/plan HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDllYzQ0ZGFjZjA0OTRhNTc1NDIyYyIsImVtYWlsIjoicm9iZXJ0bzJAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTYzNDMwNywiZXhwIjoxNzU5NjM3OTA3fQ.cq1Qf0dLppqAwmIFdUzbhLINQxq0t-zzVgg1rksm5VA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTFlMzBiMGM5MDEzMzI1YzRhOTBlYiIsImVtYWlsIjoiZXdpbnMyNEBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5NjM5ODI4LCJleHAiOjE3NTk2NDM0Mjh9.3oxp4Xgk0TtEEAUuRaJ6Xk845zQnnVUjqnkHcxiusds
 
 {
-    "plan": "plus"
+    "plan": "premium"
+}
+
+
+### Create Reservation - Crear nueva reserva
+POST http://localhost:3000/api/v1/reservations HTTP/1.1
+content-type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGQ4YTMxODcwNDI3ODFlYmJmMmExNSIsImVtYWlsIjoicm9iZXJ0bzNAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTcyNzc3MCwiZXhwIjoxNzU5NzMxMzcwfQ.PJehd2g2j7zhMylRSm95WrP0--aXebwMgEaaF0Hh3fk
+
+{
+    "serviceId": "68e098d03af275745948b59a",
+    "barberId": "68dd8add6b89aa19585548e3",
+    "reservationDate": "2025-10-15",
+    "reservationTime": "14:30",
+    "status": "pending"
 }

@@ -12,4 +12,7 @@ const routes = express.Router();
 
 routes.use(authMiddleware);
 
-routes.post("/", validateRequest(validateCreateReservation, reqValidate.BODY), createReservation);  
+routes.post("/",validateRoleMiddleware('customer'), validateRequest(validateCreateReservation, reqValidate.BODY), createReservation);  
+
+
+export default routes;

@@ -17,7 +17,7 @@ export const validateSignup = Joi.object({
     phone: Joi.number().integer().required(),
     password: Joi.string().min(6).max(20).required(),
     role: Joi.string().valid('customer').default('customer'),
-    plan: Joi.string().valid('plus', 'premium').default('plus')
+    plan: Joi.string().valid('plus', 'premium').default('plus') //chequear si no deja el plus siempre
 });
 
 export const validateLogin = Joi.object({
