@@ -14,9 +14,10 @@ export const createService = async (req, res, next) => {
 
 
 export const getServiceById = async (req, res, next) => {
+     console.log('req.params:', req.params);
     try {
-        const _id  = req.params.id;
-        const service = await serviceRepository.getServiceById(_id);
+        const id  = req.params.id;
+        const service = await serviceRepository.getServiceById(id);
         if (!service) {
             return next(createError(404, 'Servicio no encontrado'));
         }

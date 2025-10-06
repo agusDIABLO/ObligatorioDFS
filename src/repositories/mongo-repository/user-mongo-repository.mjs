@@ -46,6 +46,18 @@ const userMongoRepository = {
         }
     },
 
+    async decrementLimitReservations(userId) {
+        try {
+            const user = await User.findByIdAndUpdate(
+                userId,
+                { $inc: { limitReservations: -1 } },
+                { new: true }
+            )} catch (error) {
+            console.log('Error al decrementar el límite de reservas en mongo', error);
+        }   
+    }
+
+
 
     
 

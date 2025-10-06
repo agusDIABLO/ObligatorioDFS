@@ -11,18 +11,16 @@ export const createReservation = async (req, res, next) => {
         const { barberId, serviceId, reservationDate, reservationTime, status } = req.body;
         const customerId = req.user.id; // del token
         
-        // ACA VA LOGICA DE RESERVA CON TIEMPO, TIENE QUE SER LUEGO DE HOY
+        
 
         const customer = await userRepository.getUserById(customerId);
-        if (!customer || customer.role != 'customer') {
-            return next(createError(400, 'Cliente no válido'));
+        if (!customer || !customer.role.includes('customer')) {
+        return next(createError(400, 'Cliente no válido'));
         }
         
-        // ACA VA LOGICA DEL BARBERO
-        
         const barber = await userRepository.getUserById(barberId);
-        if (!barber || barber.role != 'barber') {
-            return next(createError(400, 'Barbero no válido'));
+        if (!barber || !barber.role.includes('barber')) {
+        return next(createError(400, 'Barbero no válido'));
         }
 
         const service = await serviceRepository.getServiceById(serviceId);
@@ -30,6 +28,9 @@ export const createReservation = async (req, res, next) => {
             return next(createError(400, 'Servicio no válido'));
         }
 
+        console.log('customer:', customer);
+        console.log('barber:', barber);
+        console.log('service:', service);
         const nuevaReserva = await reservationRepository.createReservation({
             customerId,
             barberId,
