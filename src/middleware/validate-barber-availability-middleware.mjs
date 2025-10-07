@@ -5,7 +5,7 @@ import serviceRepository from "../repositories/service-repository.mjs";
 
 export const validateBarberAvailabilityMiddleware = async (req, res, next) => {
     try {
-        const { barberId, serviceId ,reservationDate, reservationTime } = req.body;
+        const { barberId, serviceId, reservationDateTime } = req.body;
 
         const service = await serviceRepository.getServiceById(serviceId);
         if (!service) {
@@ -14,17 +14,25 @@ export const validateBarberAvailabilityMiddleware = async (req, res, next) => {
 
         const duration = service.duration; // duración en minutos
 
-        const startTime = new Date(`${reservationDate}T${reservationTime}`);
-        const endTime = new Date(startTime.getTime() + duration * 60000); // sumamos duracion en ms
+        const startTime = new Date(reservationDateTime);
+        const endTime = new Date(startTime.getTime() + duration * 60000);
 
-        // Buscar reservas existentes del barbero en la misma fecha
-        const existingReservations = await reservationRepository.getReservationByBarberAndDate(barberId, reservationDate);
+        // Buscar reservas existentes del barbero en el mismo día
+        const startOfDay = new Date(startTime);
+        startOfDay.setHours(0, 0, 0, 0);
+        
+        const endOfDay = new Date(startTime);
+        endOfDay.setHours(23, 59, 59, 999);
+        
+        const existingReservations = await reservationRepository.getReservationByBarberAndDate(
+            barberId, startOfDay, endOfDay
+        );
 
         // Verificar si hay solapamiento de horarios
         const isOverlapping = existingReservations.some(reservation => {
-            const existingStartTime = new Date(`${reservation.reservationDate.toISOString().split('T')[0]}T${reservation.reservationTime}`);
-            const existingServiceDuration = reservation.serviceId?.duration || 0;
+            const existingStartTime = new Date(reservation.reservationDateTime);
             const existingEndTime = new Date(existingStartTime.getTime() + reservation.serviceId.duration * 60000);
+            
             return (startTime >= existingStartTime && startTime < existingEndTime) ||
                    (endTime > existingStartTime && endTime <= existingEndTime) ||
                    (startTime <= existingStartTime && endTime >= existingEndTime);

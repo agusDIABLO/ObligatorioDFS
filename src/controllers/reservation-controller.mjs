@@ -8,7 +8,7 @@ import serviceRepository from "../repositories/service-repository.mjs";
 
 export const createReservation = async (req, res, next) => {   
     try {
-        const { barberId, serviceId, reservationDate, reservationTime, status } = req.body;
+        const { barberId, serviceId, reservationDateTime, status } = req.body;
         const customerId = req.user.id; // del token
         
         
@@ -35,8 +35,7 @@ export const createReservation = async (req, res, next) => {
             customerId,
             barberId,
             serviceId,
-            reservationDate,
-            reservationTime,
+            reservationDateTime,
             status
         });
 

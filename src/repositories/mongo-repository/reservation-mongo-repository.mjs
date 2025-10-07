@@ -14,19 +14,13 @@ const reservationMongoRepository = {
         }
     },
           
-    async getReservationByBarberAndDate(barberId, reservationDate) {
+    async getReservationByBarberAndDate(barberId, startOfDay, endOfDay) {
         try {
-            const startOfDay = new Date(reservationDate);
-            startOfDay.setHours(0, 0, 0, 0);
-
-            const endOfDay = new Date(reservationDate);
-            endOfDay.setHours(23, 59, 59, 999);
-
             const reservations = await Reservation.find({
                 barberId,
-                reservationDate: { $gte: startOfDay, $lte: endOfDay },
+                reservationDateTime: { $gte: startOfDay, $lte: endOfDay },
                 status: 'confirmed' // Solo reservas confirmadas
-            }).populate('serviceId', 'duration name') // Popula solo el nombre y email del cliente
+            }).populate('serviceId', 'duration name') // Popula solo el nombre y duración del servicio
             .lean(); // Convierte a objetos JavaScript simples
             
             return reservations;
@@ -36,21 +30,14 @@ const reservationMongoRepository = {
         }
     },
 
-    async getReservationByCustomerAndDate(customerId, reservationDate) {
+    async getReservationsByCustomerAndDateRange(customerId, startOfDay, endOfDay) {
         try {
-            const startOfDay = new Date(reservationDate);
-            startOfDay.setHours(0, 0, 0, 0);
-
-            const endOfDay = new Date(reservationDate);
-            endOfDay.setHours(23, 59, 59, 999);
-
             const reservations = await Reservation.find({
                 customerId,
-                reservationDate: { $gte: startOfDay, $lte: endOfDay },
+                reservationDateTime: { $gte: startOfDay, $lte: endOfDay },
                 status: 'confirmed' // Solo reservas confirmadas
-            }).populate('serviceId', 'duration name') // Popula solo el nombre y email del cliente
+            }).populate('serviceId', 'duration name') // Popula solo el nombre y duración del servicio
             .lean(); // Convierte a objetos JavaScript simples
-
             return reservations;
         } catch (error) {
             console.log('Error al obtener las reservas por cliente y fecha en mongo', error);

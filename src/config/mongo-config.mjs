@@ -4,6 +4,8 @@ import { baseConstant } from "../constants/base-constants.mjs";
 import { databaseTarget } from "../constants/base-mongo.mjs";
 
 
+
+
 const{MONGO_URL, MONGO_PORT, MONGO_DB, MONGO_BD_IN_USE, MONGO_LOCAL, MONGO_ATLAS, MONGO_ATLAS_URI, MONGO_ATLAS_USER, MONGO_ATLAS_PASS} = process.env;
 let mongoUri;
 

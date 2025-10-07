@@ -8,8 +8,8 @@ POST http://localhost:3000/api/v1/signup
 Content-Type: application/json
 
 {
-  "name": "Eduardo Prueba",
-  "email": "prueba1@example.com",
+  "name": "Matias Prueba",
+  "email": "matias1@example.com",
   "password": "12345678",
   "phone": "1234567890"
 }
@@ -52,7 +52,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0Z
 ### New Service - Crear nuevo servicio
 POST http://localhost:3000/api/v1/services HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0ZDcxNDlhZjZiZjI3ZGYwMiIsImVtYWlsIjoicHJ1ZWJhMUBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5NzgzNzAzLCJleHAiOjE3NTk3ODczMDN9.DNr6hRpcN8E4yo0EfsyYsE31fv1F21PlLqJkLPhYwiA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1NGJhYTNhYzBhYzdhNDhhYjRkOSIsImVtYWlsIjoicHJ1ZWJhMUBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5Nzk0MzY1LCJleHAiOjE3NTk3OTc5NjV9.ZOWwGcQMobLAOWq73bDGI_7o8Y6cGgspUP1ntMU84-g
 
 {
     "name": "Servicio prueba 01 vsc",
@@ -80,12 +80,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTFlMzBiM
 ### Create Reservation - Crear nueva reserva
 POST http://localhost:3000/api/v1/reservations HTTP/1.1
 content-type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0ZDcxNDlhZjZiZjI3ZGYwMiIsImVtYWlsIjoicHJ1ZWJhMUBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5Nzg5NDQyLCJleHAiOjE3NTk3OTMwNDJ9.Glt_Kq4tQDRIhoI2oj1ltsRI2aHrw08KeexTCj7xVbQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1NjhkYTNhYzBhYzdhNDhhYjRlMSIsImVtYWlsIjoibWF0aWFzMUBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5Nzk0ODI5LCJleHAiOjE3NTk3OTg0Mjl9.mCYlqKhj56Zc_JCIDgNMzXFzzoOz5JHxpN2Nc2a_RVw
 
 {
-    "barberId": "68dd8add6b89aa19585548e3",
-    "serviceId": "68e42d176fc054b63bd60ad3",
-    "reservationDate": "2025-10-16",
-    "reservationTime": "14:30",
+    "barberId": "68e454baa3ac0ac7a48ab4d9",
+    "serviceId": "68e455d0a3ac0ac7a48ab4de",
+    "reservationDateTime": "2025-10-16T14:30:00.000Z",
     "status": "confirmed"
 }
