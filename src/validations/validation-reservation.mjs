@@ -3,6 +3,32 @@ import Joi from "joi";
 export const validateCreateReservation = Joi.object({
     serviceId: Joi.string().required(),
     barberId: Joi.string().required(),
-    reservationDateTime: Joi.date().greater('now').required(),
+    reservationDateTime: Joi.date()
+        .greater('now')
+        .required()
+        .custom((value, helpers) => {
+            const date = new Date(value);
+            const hour = date.getUTCHours(); // Usar UTC para consistencia
+            const minutes = date.getUTCMinutes();
+            const timeInMinutes = hour * 60 + minutes;
+            
+            // Horario de funcionamiento: 8:00 AM (480 min) a 6:00 PM (1080 min)
+            const openTime = 8 * 60; // 8:00 AM = 480 minutos
+            const closeTime = 18 * 60; // 6:00 PM = 1080 minutos
+            
+            console.log(`Validando hora: ${hour}:${minutes} (${timeInMinutes} minutos)`);
+            console.log(`Rango permitido: ${openTime} - ${closeTime} minutos`);
+            
+            if (timeInMinutes < openTime || timeInMinutes >= closeTime) {
+                return helpers.message('La reserva debe ser entre las 8:00 AM y las 6:00 PM');
+            }
+
+            // Validar que los minutos sean múltiplos de 30
+            if (minutes % 30 !== 0) {
+                return helpers.message('La hora debe ser en intervalos de 30 minutos (ej: 9:00, 9:30, 10:00, 10:30)');
+            }
+            
+            return value;
+        }),
     status: Joi.string().valid('pending', 'confirmed', 'cancelled').default('pending')
 });

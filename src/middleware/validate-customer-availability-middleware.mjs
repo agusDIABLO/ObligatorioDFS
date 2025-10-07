@@ -10,7 +10,8 @@ export const validateCustomerAvailabilityMiddleware = async (req, res, next) => 
         const service = await serviceRepository.getServiceById(serviceId);
 
         if (!service) {
-            return next(createError(400, 'Servicio no válido'));
+            return res.status(400).json({error: 'Servicio no válido'});
+            //return next(createError(400, 'Servicio no válido'));
         }
 
         const duration = service.duration; // duración en minutos
@@ -20,7 +21,8 @@ export const validateCustomerAvailabilityMiddleware = async (req, res, next) => 
         
         // Verificar que la fecha sea válida
         if (isNaN(startTime.getTime())) {
-            return next(createError(400, 'Fecha y hora de reserva inválida'));
+            return res.status(400).json({error: 'Fecha y hora de reserva inválida'});
+            //return next(createError(400, 'Fecha y hora de reserva inválida'));
         }
         
         const endTime = new Date(startTime.getTime() + duration * 60000);
@@ -47,11 +49,13 @@ export const validateCustomerAvailabilityMiddleware = async (req, res, next) => 
         });
 
         if (isOverlapping) {
-            return next(createError(400, 'Ya tienes otra reserva en el horario seleccionado'));
+            return res.status(400).json({error: 'Ya tienes otra reserva en el horario seleccionado'});
+            //return next(createError(400, 'Ya tienes otra reserva en el horario seleccionado'));
         }
         
         next();
     } catch (error) {
-        next(createError(500, 'Error al validar la disponibilidad del cliente'));
+        return res.status(500).json({error: 'Error al validar la disponibilidad del cliente'});
+        //next(createError(500, 'Error al validar la disponibilidad del cliente'));
     }
 };
