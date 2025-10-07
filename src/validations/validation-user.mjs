@@ -16,7 +16,7 @@ export const validateSignup = Joi.object({
     email: Joi.string().regex(/.+@.+\..+/).required(),
     phone: Joi.number().integer().required(),
     password: Joi.string().min(6).max(20).required(),
-    role: Joi.string().valid('customer').default('customer'),
+    role: Joi.string().valid('customer', 'barber', 'admin').default('customer'),
     plan: Joi.string().valid('plus', 'premium').default('plus') //chequear si no deja el plus siempre
 });
 

@@ -9,7 +9,6 @@ export const descontarLimitReservationAUsuarioMiddleware = async (req, res, next
             return next(createError(400, 'Cliente no válido'));
         }
         
-        // EL ERROR ES POR ACA
 
         if (!customer.role.includes('customer')) {
             return next(createError(403, 'Solo los clientes pueden hacer reservas'));
@@ -19,8 +18,10 @@ export const descontarLimitReservationAUsuarioMiddleware = async (req, res, next
             return next(createError(403, 'Has alcanzado el límite de reservas permitidas. No puedes hacer más reservas.'));
         }   
 
-
-        await userRepository.decrementLimitReservations(customerId);
+        if (customer.plan == 'plus') {
+            await userRepository.decrementLimitReservations(customerId);
+        }
+        
         // Descontar 1 al límite de reservas
         //customer.limitReservations -= 1;
         //await customer.save();

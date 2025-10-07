@@ -3,6 +3,16 @@ import Joi from "joi";
 export const validateCreateReservation = Joi.object({
     serviceId: Joi.string().required(),
     barberId: Joi.string().required(),
+    reservationDateTime: Joi.date().greater('now').required()
+    .custom((value, helpers) => {
+        const date = new Date(value);
+        const hours = date.getUTCHours();
+        const minutes = date.getUTCMinutes();
+        if (hours < 9 || (hours >= 22 && minutes > 0) || hours > 22) {
+            return helpers.message('La reserva debe ser entre las 9:00 AM y las 10:00 PM');
+        }       
+        return value;
+    }),
     reservationDateTime: Joi.date()
         .greater('now')
         .required()

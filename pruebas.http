@@ -8,10 +8,11 @@ POST http://localhost:3000/api/v1/signup
 Content-Type: application/json
 
 {
-  "name": "Matias Prueba",
-  "email": "matias1@example.com",
+  "name": "Joaquin Admin",
+  "email": "pruebaadmin6@example.com",
   "password": "12345678",
-  "phone": "1234567890"
+  "phone": "1234567890",
+  "role": "admin"
 }
 
 
@@ -21,7 +22,7 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "matias1@example.com",
+  "email": "pruebacustomer@example.com",
   "password": "12345678"
 }
 # > {% 
@@ -35,10 +36,10 @@ Content-Type: application/json
 ### New Category - Crear nueva categoria
 POST http://localhost:3000/api/v1/categories HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGYxN2IzZDIyZWYwNWQ2ZWJlMGY0YSIsImVtYWlsIjoicm9iZXJ0bzZAZXhhbXBsZS5jb20iLCJyb2xlIjpbImFkbWluIl0sImlhdCI6MTc1OTQ1MTE1MiwiZXhwIjoxNzU5NDU0NzUyfQ.fkGYhxMsJzgrMMfjNkjYN7mYbeWcSAsm-2qJuh5fDHw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OTNjOWVjZTI0NzA5YzdlNzZiNyIsImVtYWlsIjoicHJ1ZWJhYWRtaW42QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk3OTk2MTIsImV4cCI6MTc1OTgwMzIxMn0.Ff7Yx5A73_GVE-o9JTRzvGFi6FQN3PAhCm6iZLGkqkQ
 
 {
-    "name": "categoria prueba 4"
+    "name": "categoria prueba 5"
 }
 
 
@@ -52,12 +53,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0Z
 ### New Service - Crear nuevo servicio
 POST http://localhost:3000/api/v1/services HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1NGJhYTNhYzBhYzdhNDhhYjRkOSIsImVtYWlsIjoicHJ1ZWJhMUBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5Nzk0MzY1LCJleHAiOjE3NTk3OTc5NjV9.ZOWwGcQMobLAOWq73bDGI_7o8Y6cGgspUP1ntMU84-g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OTNjOWVjZTI0NzA5YzdlNzZiNyIsImVtYWlsIjoicHJ1ZWJhYWRtaW42QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk3OTk2MTIsImV4cCI6MTc1OTgwMzIxMn0.Ff7Yx5A73_GVE-o9JTRzvGFi6FQN3PAhCm6iZLGkqkQ
+
 
 {
-    "name": "Servicio prueba 01 vsc",
+    "name": "Servicio prueba 02 vsc",
     "duration": 30,
-    "price": 400,
+    "price": 120,
     "categoryId": "68dee9d460e32e30cfdbe47f"
 }
 
@@ -70,7 +72,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0Z
 ### Update User Plan - Actualizar plan de usuario
 PATCH http://localhost:3000/api/v1/users/68e1e30b0c9013325c4a90eb/plan HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTFlMzBiMGM5MDEzMzI1YzRhOTBlYiIsImVtYWlsIjoiZXdpbnMyNEBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5NjM5ODI4LCJleHAiOjE3NTk2NDM0Mjh9.3oxp4Xgk0TtEEAUuRaJ6Xk845zQnnVUjqnkHcxiusds
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OTNjOWVjZTI0NzA5YzdlNzZiNyIsImVtYWlsIjoicHJ1ZWJhYWRtaW42QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk3OTk2MTIsImV4cCI6MTc1OTgwMzIxMn0.Ff7Yx5A73_GVE-o9JTRzvGFi6FQN3PAhCm6iZLGkqkQ
 
 {
     "plan": "premium"
@@ -80,11 +82,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTFlMzBiM
 ### Create Reservation - Crear nueva reserva
 POST http://localhost:3000/api/v1/reservations HTTP/1.1
 content-type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1NjhkYTNhYzBhYzdhNDhhYjRlMSIsImVtYWlsIjoibWF0aWFzMUBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5Nzk4NTkwLCJleHAiOjE3NTk4MDIxOTB9.hfOH1rB7L2Yt7L5upy4cJrx5r-T3n-VhQQD2QsOhzTI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2NDc5YzIyNDYwZTNiOWVmMDBmMSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI1QGV4YW1wbGUuY29tIiwicm9sZSI6WyJjdXN0b21lciJdLCJpYXQiOjE3NTk3OTgzOTMsImV4cCI6MTc1OTgwMTk5M30.xt3EqyDPSNnqzIH5UMr-Cj2tcGeivQPsNilJ_um2iD0
 
 {
-    "barberId": "68df1bdd2b5c7d97a77219e1",
-    "serviceId": "68e455d0a3ac0ac7a48ab4de",
-    "reservationDateTime": "2025-10-07T15:02:00.000Z",
+    "barberId": "68e462c1c22460e3b9ef00c4",
+    "serviceId": "68e42d176fc054b63bd60ad3",
+    "reservationDateTime": "2025-10-07T22:30:00.000Z",
     "status": "confirmed"
 }
+

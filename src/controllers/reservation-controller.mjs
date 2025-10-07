@@ -28,9 +28,7 @@ export const createReservation = async (req, res, next) => {
             return next(createError(400, 'Servicio no válido'));
         }
 
-        console.log('customer:', customer);
-        console.log('barber:', barber);
-        console.log('service:', service);
+
         const nuevaReserva = await reservationRepository.createReservation({
             customerId,
             barberId,

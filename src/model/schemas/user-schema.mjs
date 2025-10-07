@@ -10,12 +10,12 @@ const userSchema = new mongoose.Schema({
     password: {type: String, required: true},
     role: {type: [String], enum: ['customer', 'admin', 'barber'], default: ['customer']},
     plan: {type: String, enum: ['plus', 'premium'], default: 'plus'},
-    limitReservations: {type: Number, default: 11} 
+    limitReservations: {type: Number, default: 10} 
     },
 {
     timestamps: true
 });
-
+    
     //indice email unico y ascendente
     userSchema.index({ email: 1 }, { unique: true });
 
