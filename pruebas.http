@@ -22,7 +22,7 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "pruebacustomer@example.com",
+  "email": "pruebacustomer6@example.com",
   "password": "12345678"
 }
 # > {% 
@@ -105,3 +105,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTUzZjc1N
 ### Get Reservations By Id
 GET http://localhost:3000/api/v1/reservations/user/68e45962ad10bc7f4f659815
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1OTYyYWQxMGJjN2Y0ZjY1OTgxNSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXJAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTkxMTczMCwiZXhwIjoxNzU5OTE1MzMwfQ.InDlTt3q3-akH7DC276npw5e3vNJVOPfOQCPVEFpu04
+
+
+### Get All Reservations
+GET http://localhost:3000/api/v1/reservations/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OGZkOWVjZTI0NzA5YzdlNzZiNSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI2QGV4YW1wbGUuY29tIiwicm9sZSI6WyJjdXN0b21lciJdLCJpYXQiOjE3NTk5NTM5NzgsImV4cCI6MTc1OTk1NzU3OH0.lUPUZen1OL8CTKUZuh_FgtlBWHMCu3s4h1GY9Nj_KEM

@@ -1,4 +1,4 @@
-import { getReservationByCategory, getReservationByUser } from "../../controllers/reservation-controller.mjs";
+import { getAllReservations, getReservationByCategory, getReservationByUser } from "../../controllers/reservation-controller.mjs";
 import Reservation from "../../model/reservation.mjs";
 import Service from "../../model/service.mjs"
 
@@ -107,7 +107,25 @@ const reservationMongoRepository = {
     } catch (error) {
         throw new Error('Error al obtener las reservas del barbero');
     }
-}
+},
+
+
+
+    async getAllReservations(){
+        try{
+        const reservations = await Reservation.find()
+        .populate('customerId', 'name email') 
+        .populate('barberId', 'name email')
+        .populate('serviceId', 'name duration price');
+
+        
+        return reservations;
+        }catch(error){
+        
+        throw new Error('Error al obtener todas las reservas');
+        
+        }
+    }
 
 
 }

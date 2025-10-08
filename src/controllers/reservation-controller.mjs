@@ -115,3 +115,23 @@ export const getReservationByUser = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener las reservas por usuario 500' });
     }
 };
+
+
+export const getAllReservations = async (req, res) => {
+    try {
+      const reservations = await reservationRepository.getAllReservations();
+
+      if (!reservations || reservations.length == 0) {
+        return res.status(400).json({ message: 'No hay reservas registradas' });
+      }
+        return res.status(200).json(reservations); 
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener las reservas' });
+    }
+
+
+
+
+
+
+}
