@@ -22,7 +22,7 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "roberto1@example.com",
+  "email": "pruebacustomer4@example.com",
   "password": "12345678"
 }
 # > {% 
@@ -122,4 +122,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDllYjNmO
     "serviceId": "68e42d176fc054b63bd60ad3",
     "reservationDateTime": "2025-10-24T20:00:00.000Z",
     "status": "confirmed"
+}
+
+
+### Update parcial Reservation
+PATCH http://localhost:3000/api/v1/reservations/68e61f049eb1bc38c3c7634d HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2MzBiYzIyNDYwZTNiOWVmMDBjOCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI0QGV4YW1wbGUuY29tIiwicm9sZSI6WyJjdXN0b21lciJdLCJpYXQiOjE3NTk5NjA3MTAsImV4cCI6MTc1OTk2NDMxMH0.cyc1i5VsiQpHR_NsGekDTc63E8EFHxroC5zMdWoXzuU
+
+{
+    "reservationDateTime": "2025-10-22T18:00:00.000Z"
 }

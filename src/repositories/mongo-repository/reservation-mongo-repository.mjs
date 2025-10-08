@@ -140,6 +140,19 @@ const reservationMongoRepository = {
             throw new Error("Error al actualizar la reserva");
         }
 
+    },
+
+
+    async patchReservation(id, data){
+        try {
+            const reservation = await Reservation.findByIdAndUpdate(id, { $set: data},{
+            new: true,  
+            runValidators: true
+
+            });
+        } catch (error) {
+            throw new Error("Error al actualizar parcialmente la reserva");
+        }
     }
 
 
