@@ -129,9 +129,32 @@ export const getAllReservations = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener las reservas' });
     }
 
+}
 
 
+export const updateReservation = async (req, res) =>{
+    try {
+        const {id} = req.params;
+        const updatedData = req.body;
+        const userId = req.user.id;
+        const reservation = await reservationRepository.getReservationById(id);
+        if (!reservation) {
+            return res.status(404).json({ message: "Reserva no encontrada" });
+        }
 
+        if (req.user.role == 'customer' && reservation.customerId.toString() !== userId ) {
+            return res.status(403).json({ message: "No tienes permiso para modificar esta reserva" });
+        }
+
+        const updatedReservation = await reservationRepository.updateReservation(id, updatedData);
+
+        if (!updatedReservation) {
+        return res.status(404).json({ message: "Reserva no encontrada" });
+        }
+        res.status(200).json({ message: "Reserva actualizada correctamente", updatedReservation });
+    } catch (error) {
+        res.status(500).json({ message: "Error al actualizar la reserva" });
+    }
 
 
 }

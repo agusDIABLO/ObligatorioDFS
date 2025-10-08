@@ -22,7 +22,7 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-  "email": "pruebacustomer6@example.com",
+  "email": "roberto1@example.com",
   "password": "12345678"
 }
 # > {% 
@@ -110,3 +110,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1OTYyY
 ### Get All Reservations
 GET http://localhost:3000/api/v1/reservations/all
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OGZkOWVjZTI0NzA5YzdlNzZiNSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI2QGV4YW1wbGUuY29tIiwicm9sZSI6WyJjdXN0b21lciJdLCJpYXQiOjE3NTk5NTM5NzgsImV4cCI6MTc1OTk1NzU3OH0.lUPUZen1OL8CTKUZuh_FgtlBWHMCu3s4h1GY9Nj_KEM
+
+
+### Update Reservation
+PUT http://localhost:3000/api/v1/reservations/68e61f049eb1bc38c3c7634d HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDllYjNmOWMzMGJjM2I3MWRhZWViNCIsImVtYWlsIjoicm9iZXJ0bzFAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTk1ODc5NCwiZXhwIjoxNzU5OTYyMzk0fQ.q1JUd5k12xjlxxV62XGBRYky3PWKjj5QlkDk9kyY8Bs
+
+{
+    "barberId": "68e462c1c22460e3b9ef00c4",
+    "serviceId": "68e42d176fc054b63bd60ad3",
+    "reservationDateTime": "2025-10-24T20:00:00.000Z",
+    "status": "confirmed"
+}

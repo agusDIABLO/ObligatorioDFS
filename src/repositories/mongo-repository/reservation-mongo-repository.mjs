@@ -1,4 +1,4 @@
-import { getAllReservations, getReservationByCategory, getReservationByUser } from "../../controllers/reservation-controller.mjs";
+import { getAllReservations, getReservationByCategory, getReservationByUser, updateReservation } from "../../controllers/reservation-controller.mjs";
 import Reservation from "../../model/reservation.mjs";
 import Service from "../../model/service.mjs"
 
@@ -52,7 +52,7 @@ const reservationMongoRepository = {
             const reservation = await Reservation.findById(id).populate('serviceId', 'duration name').lean();
             return reservation;
         } catch (error) {
-            return new Error('Error al obtener la reserva por ID en mongo', error);
+            throw new Error('Error al obtener la reserva por ID en mongo', error);
         }   
     },
 
@@ -125,6 +125,21 @@ const reservationMongoRepository = {
         throw new Error('Error al obtener todas las reservas');
         
         }
+    },
+
+
+    async updateReservation(id, data){
+        try {
+            const reservation = await Reservation.findByIdAndUpdate(id, data, {
+            new: true, 
+            runValidators: true 
+        });
+            return reservation;
+
+        } catch (error) {
+            throw new Error("Error al actualizar la reserva");
+        }
+
     }
 
 

@@ -63,3 +63,5 @@ export const validateReservationByUserId = Joi.object({
         "string.empty": "El id del usuario no puede estar vacío"
     })
 });
+
+

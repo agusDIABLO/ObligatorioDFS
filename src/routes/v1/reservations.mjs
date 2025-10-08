@@ -14,7 +14,8 @@ import {
     deleteReservation, 
     getReservationByCategory, 
     getReservationByUser,
-    getAllReservations 
+    getAllReservations,
+    updateReservation 
 } from '../../controllers/reservation-controller.mjs';
 
 
@@ -41,5 +42,8 @@ routes.get("/category/:id", validateRoleMiddleware('admin'), validateRequest(val
 routes.get("/user/:id", validateRoleMiddleware('customer','admin','barber'), getReservationByUser);
 
 routes.get("/all", validateRoleMiddleware('admin'), getAllReservations)
+
+routes.put("/:id", validateRoleMiddleware('customer','admin'), validateRequest(validateCreateReservation, reqValidate.BODY), updateReservation);
+
 
 export default routes;
