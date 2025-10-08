@@ -7,10 +7,10 @@ const serviceMongoRepository = {
         try {
             const service = new Service(data)
             const serviceCreado = await service.save();
-            console.log('service', serviceCreado)
+            
             return service;
         } catch (error) {
-            console.log('No se pudo crear el servicio en mongo', error)
+            throw new Error("error no se pudo crear el servicio en la base de datos");
         }
     },
 
@@ -19,7 +19,7 @@ const serviceMongoRepository = {
             const service = await Service.findById(id);
             return service;
         } catch (error) {
-            console.log('Error al obtener el servicio por ID en mongo', error);
+            throw new Error("error al obtener el servicio en la base de datos");
         }   
 
 

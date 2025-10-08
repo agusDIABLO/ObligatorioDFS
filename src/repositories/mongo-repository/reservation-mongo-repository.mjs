@@ -8,10 +8,10 @@ const reservationMongoRepository = {
         try{
         const reservation = new Reservation(data);
         const reservationCreada = await reservation.save();
-        console.log('reservationCreada', reservationCreada)
+        
         return reservationCreada;
         } catch (error) {
-            console.log('No se pudo crear la reserva en mongo', error)
+            throw new Error("error no se pudo crear la reserva en la base de datos");
         }
     },
           
@@ -26,8 +26,7 @@ const reservationMongoRepository = {
             
             return reservations;
         } catch (error) {
-            console.log('Error al obtener las reservas por barbero y fecha en mongo', error);
-            throw error;
+            throw new Error("error al obtener reservas por fecha y barbero en la base de datos");
         }
     },
 
@@ -41,8 +40,7 @@ const reservationMongoRepository = {
             .lean(); // Convierte a objetos JavaScript simples
             return reservations;
         } catch (error) {
-            console.log('Error al obtener las reservas por cliente y fecha en mongo', error);
-            throw error;
+           throw new Error("error al obtener reservas por fecha y cliente en la base de datos");
         }
     },
 

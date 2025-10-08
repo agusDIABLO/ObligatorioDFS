@@ -8,10 +8,10 @@ const categoryMongoRepository = {
         try {
         const category = new Category(data);
         const categoryCreada = await category.save();
-        console.log('categoryCreada', categoryCreada)      
+              
         return categoryCreada;
         } catch (error) {
-            console.log('No se pudo crear la categoria en mongo', error)
+            throw new Error("error no se pudo crear la categoria en la base de datos");
         }   
     },
 
@@ -21,7 +21,7 @@ const categoryMongoRepository = {
             const category = await Category.findById(id);
             return category;
         } catch (error) {
-            console.log('No se pudo obtener la categoria por id en mongo', error)
+            throw new Error("error al obtener categoria en la base de datos");
         }
     }
 

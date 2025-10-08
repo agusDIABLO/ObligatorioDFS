@@ -10,14 +10,18 @@ const userMongoRepository = {
             delete userCreado._doc.password;
             return userCreado;
         } catch (error) {
-            console.log('No se pudo crear el usuario en mongo', error)
+            throw new Error("no se pudo crear el usuario en la base de datos");
         }
     },
 
 
     async getUserByEmail(data) {
-        console.log('data', data)
-        return User.findOne(({ email: data }));
+        try {
+            return User.findOne(({ email: data }));
+            
+        } catch (error) {
+             throw new Error("error al obtener usuario por email en la base de datos");
+        }
     },
 
 
@@ -29,7 +33,7 @@ const userMongoRepository = {
             }
             return user;
         } catch (error) {
-            console.log('Error al obtener el usuario por ID en mongo', error);
+            throw new Error("error al obtener usuario en la base de datos");
         }
     },
 
@@ -42,7 +46,7 @@ const userMongoRepository = {
             }
             return userActualizado;
         } catch (error) {
-            console.log('Error al actualizar el usuario en mongo', error);
+            throw new Error("error al borrar usuario en la base de datos");
         }
     },
 
@@ -53,7 +57,8 @@ const userMongoRepository = {
                 { $inc: { limitReservations: -1 } },
                 { new: true }
             )} catch (error) {
-            console.log('Error al decrementar el límite de reservas en mongo', error);
+            throw new Error("error al decrementar las reservas");
+            
         }   
     }
 

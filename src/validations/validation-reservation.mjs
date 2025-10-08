@@ -26,8 +26,7 @@ export const validateCreateReservation = Joi.object({
             const openTime = 8 * 60; // 8:00 AM = 480 minutos
             const closeTime = 22 * 60; // 6:00 PM = 1080 minutos
             
-            console.log(`Validando hora: ${hour}:${minutes} (${timeInMinutes} minutos)`);
-            console.log(`Rango permitido: ${openTime} - ${closeTime} minutos`);
+
             
             if (timeInMinutes < openTime || timeInMinutes >= closeTime) {
                 return helpers.message('La reserva debe ser entre las 8:00 AM y las 10:00 PM');
