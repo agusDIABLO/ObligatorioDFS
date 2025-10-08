@@ -1,7 +1,6 @@
 import express from 'express';
-import { createReservation } from '../../controllers/reservation-controller.mjs';
 import { validateRequest } from '../../middleware/validation.middleware.mjs';
-import { validateCreateReservation } from '../../validations/validation-reservation.mjs';
+import { validateCreateReservation, validateReservationByUserId, validateReservationByCategory } from '../../validations/validation-reservation.mjs';
 import { validateDeleteReservation } from '../../validations/validation-reservation.mjs';
 import reqValidate from '../../constants/request-validate-constants.mjs';
 import { authMiddleware } from '../../middleware/auth-middleware.mjs';
@@ -10,8 +9,12 @@ import { validateReservationTimeMiddleware } from '../../middleware/validate-res
 import { descontarLimitReservationAUsuarioMiddleware } from '../../middleware/descontarLimitReservationAUsuario-middleware.mjs';
 import { validateBarberAvailabilityMiddleware } from '../../middleware/validate-barber-availability-middleware.mjs';
 import { validateCustomerAvailabilityMiddleware } from '../../middleware/validate-customer-availability-middleware.mjs';
-import { deleteReservation } from '../../controllers/reservation-controller.mjs';
-
+import { 
+    createReservation, 
+    deleteReservation, 
+    getReservationByCategory, 
+    getReservationByUser 
+} from '../../controllers/reservation-controller.mjs';
 
 
 const routes = express.Router();
@@ -29,6 +32,13 @@ createReservation);
 
 
 routes.delete("/:id", validateRoleMiddleware('customer', 'admin'), validateRequest(validateDeleteReservation, reqValidate.PARAM), deleteReservation);
+
+
+routes.get("/category/:id", validateRoleMiddleware('admin'), validateRequest(validateReservationByCategory, reqValidate.PARAM), getReservationByCategory);
+
+
+routes.get("/user/:id", validateRoleMiddleware('customer','admin','barber'), getReservationByUser);
+
 
 
 export default routes;

@@ -1,5 +1,6 @@
+import { getReservationByCategory, getReservationByUser } from "../../controllers/reservation-controller.mjs";
 import Reservation from "../../model/reservation.mjs";
-
+import Service from "../../model/service.mjs"
 
 
 const reservationMongoRepository = {
@@ -57,12 +58,57 @@ const reservationMongoRepository = {
 
     async deleteReservation(id) {
         try {
-            deletedReservation = await Reservation.findByIdAndDelete(id);
+            const deletedReservation = await Reservation.findByIdAndDelete(id);
             return deletedReservation;
         } catch (error) {
-             return new Error('Error al eliminar la reserva en mongo', error);
+             throw new Error('Error al eliminar la reserva en mongo', error);
         }
+    },
+
+
+    async getReservationsByCategory(id){
+        try {
+            const services = await Service.find({ categoryId: id }).select('_id');
+            const serviceIds = services.map(s => s._id);
+
+            const reservations = await Reservation.find({ serviceId: { $in: serviceIds }})
+            .populate('serviceId', 'name duration categoryId')
+            .populate('barberId', 'name email')
+            .populate('customerId', 'name email');
+            
+            return reservations;
+        } catch (error) {
+            throw new Error('Error al obtener las reservas por categoría');
+        }
+    },
+
+    async getReservationByCustomer(id){
+        try {
+            const reservations = await Reservation.find({customerId: id })
+            .populate('serviceId', 'name duration categoryId')
+            .populate('barberId', 'name email')
+            .populate('customerId', 'name email');
+
+            return reservations;
+        } catch (error) {
+            throw new Error('Error al obtener las reservas del usuario');
+        }
+
+    },
+
+    async getReservationsByBarber(id) {
+    try {
+        const reservations = await Reservation.find({ barberId: id })
+            .populate('serviceId', 'name duration categoryId')
+            .populate('barberId', 'name email')
+            .populate('customerId', 'name email');
+
+        return reservations;
+    } catch (error) {
+        throw new Error('Error al obtener las reservas del barbero');
     }
+}
+
 
 }
 

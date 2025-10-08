@@ -47,3 +47,19 @@ export const validateCreateReservation = Joi.object({
 export const validateDeleteReservation = Joi.object({
     id: Joi.string().hex().length(24).required()
 });
+
+
+export const validateReservationByCategory = Joi.object({
+    id: Joi.string().required().messages({
+        "any.required": "El id de la categoría es obligatorio",
+        "string.empty": "El id de la categoría no puede estar vacío"
+    })
+});
+
+
+export const validateReservationByUserId = Joi.object({
+    id: Joi.string().required().messages({
+        "any.required": "El id del usuario es obligatorio",
+        "string.empty": "El id del usuario no puede estar vacío"
+    })
+});

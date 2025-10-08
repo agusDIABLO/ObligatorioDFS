@@ -8,11 +8,11 @@ POST http://localhost:3000/api/v1/signup
 Content-Type: application/json
 
 {
-  "name": "Joaquin Admin",
-  "email": "pruebaadmin6@example.com",
+  "name": "Sebastian Mondo",
+  "email": "pruebaadmin10@example.com",
   "password": "12345678",
   "phone": "1234567890",
-  "role": "admin"
+  "role": "customer"
 }
 
 
@@ -53,14 +53,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0Z
 ### New Service - Crear nuevo servicio
 POST http://localhost:3000/api/v1/services HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OTNjOWVjZTI0NzA5YzdlNzZiNyIsImVtYWlsIjoicHJ1ZWJhYWRtaW42QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk3OTk2MTIsImV4cCI6MTc1OTgwMzIxMn0.Ff7Yx5A73_GVE-o9JTRzvGFi6FQN3PAhCm6iZLGkqkQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTUzZjc1NzRhM2M0MTk0MWY1ODk1OCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI3QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk5MDQxMTMsImV4cCI6MTc1OTkwNzcxM30.88I4xJqGY5fsIYYrUnQziQCU8lyaplVkVb19toGB4O4
 
 
 {
-    "name": "Servicio prueba 02 vsc",
+    "name": "Servicio prueba 11 vsc con categoria prueba 5",
     "duration": 30,
     "price": 120,
-    "categoryId": "68dee9d460e32e30cfdbe47f"
+    "categoryId": "68e4694f9ece24709c7e76b9"
 }
 
 
@@ -82,12 +82,26 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OTNjO
 ### Create Reservation - Crear nueva reserva
 POST http://localhost:3000/api/v1/reservations HTTP/1.1
 content-type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2NDc5YzIyNDYwZTNiOWVmMDBmMSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI1QGV4YW1wbGUuY29tIiwicm9sZSI6WyJjdXN0b21lciJdLCJpYXQiOjE3NTk3OTgzOTMsImV4cCI6MTc1OTgwMTk5M30.xt3EqyDPSNnqzIH5UMr-Cj2tcGeivQPsNilJ_um2iD0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1OTYyYWQxMGJjN2Y0ZjY1OTgxNSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXJAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTkxMTY0MSwiZXhwIjoxNzU5OTE1MjQxfQ.DcnAkkNq31Y640jsItBCmtdPxUhf5Az-H7R9iFjdz7c
 
 {
     "barberId": "68e462c1c22460e3b9ef00c4",
     "serviceId": "68e42d176fc054b63bd60ad3",
-    "reservationDateTime": "2025-10-07T22:30:00.000Z",
+    "reservationDateTime": "2025-10-20T20:00:00.000Z",
     "status": "confirmed"
 }
 
+### Delete Reservation - Borrar una reserva
+DELETE http://localhost:3000/api/v1/reservations/68e459fd0d9b1c4d7a7ec2b5 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTUzZjc1NzRhM2M0MTk0MWY1ODk1OCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI3QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk5MDQxMTMsImV4cCI6MTc1OTkwNzcxM30.88I4xJqGY5fsIYYrUnQziQCU8lyaplVkVb19toGB4O4
+
+
+
+### Get Reservations By Category 
+GET http://localhost:3000/api/v1/reservations/category/68dee9d460e32e30cfdbe47f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTUzZjc1NzRhM2M0MTk0MWY1ODk1OCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI3QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk5MDQxMTMsImV4cCI6MTc1OTkwNzcxM30.88I4xJqGY5fsIYYrUnQziQCU8lyaplVkVb19toGB4O4
+
+
+### Get Reservations By Id
+GET http://localhost:3000/api/v1/reservations/user/68e45962ad10bc7f4f659815
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1OTYyYWQxMGJjN2Y0ZjY1OTgxNSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXJAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTkxMTczMCwiZXhwIjoxNzU5OTE1MzMwfQ.InDlTt3q3-akH7DC276npw5e3vNJVOPfOQCPVEFpu04

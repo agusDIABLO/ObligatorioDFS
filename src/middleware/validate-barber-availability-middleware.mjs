@@ -13,12 +13,16 @@ export const validateBarberAvailabilityMiddleware = async (req, res, next) => {
         }
 
         const duration = service.duration; // duración en minutos
-
         const startTime = new Date(reservationDateTime);
         const endTime = new Date(startTime.getTime() + duration * 60000); // sumamos duracion en ms
 
+        const startOfDay = new Date(startTime);
+        startOfDay.setHours(0, 0, 0, 0);
+        const endOfDay = new Date(startTime);
+        endOfDay.setHours(23, 59, 59, 999);
+
         // Buscar reservas existentes del barbero en la misma fecha
-        const existingReservations = await reservationRepository.getReservationByBarberAndDate(barberId, reservationDateTime);
+        const existingReservations = await reservationRepository.getReservationByBarberAndDate(barberId, startOfDay, endOfDay);
         
         // Verificar si hay solapamiento de horarios
         const isOverlapping = existingReservations.some(reservation => {

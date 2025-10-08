@@ -52,12 +52,66 @@ export const deleteReservation = async (req, res, next) => {
         if (!reservation) {
             return next(createError(404, 'Reserva no encontrada'));
         }   
-        if (reservation.customerId.toString() != req.user.id && req.user.role.includes('customer')) {
+        if (reservation.customerId.toString() != req.user.id && !req.user.role.includes('admin')) {
             return res.status(403).json({ message: 'No tienes permiso para eliminar esta reserva' });
         }
         await reservationRepository.deleteReservation(id);
         res.status(200).json({ message: 'Reserva eliminada correctamente' });
     } catch (error) {
         next(createError(500, 'No se pudo eliminar la reserva'));
+    }
+};
+
+
+export const getReservationByCategory = async (req, res, next) => {
+    try {
+        const { id } = req.params; // id de categoria
+        const reservations = await reservationRepository.getReservationsByCategory(id)
+
+        if (!reservations || reservations.length == 0) {
+            return res.status(404).json({message: 'No hay reservas para esta categoría'});
+        }
+
+        res.status(200).json(reservations)
+    } catch (error) {
+        res.status(500).json({message: 'Error al obtener las reservas por categoría'})
+    }
+
+};
+
+
+
+export const getReservationByUser = async (req, res) => {
+    try {
+        let reservations;
+
+        if (req.user.role.includes('admin')) {
+            // Si el admin pasa un userId en params, busca solo las reservas de ese usuario
+           
+            const userId = req.params.id;
+            if (userId) {
+                // Podría ser un cliente o barber, lo dejamos por el momento con cliente
+                reservations = await reservationRepository.getReservationsByCustomer(userId);
+            } else {
+                return res.status(400).json({ message: 'Debe proporcionar un userId para buscar' });
+            }
+        
+        } else if (req.user.role.includes('barber')) {
+            reservations = await reservationRepository.getReservationsByBarber(req.user.id);
+        } else if (req.user.role.includes('customer')) {
+            
+            // Solo puede ver sus propias reservas
+            reservations = await reservationRepository.getReservationsByCustomer(req.user.id);
+        } else {
+            return res.status(403).json({ message: 'Rol no autorizado' });
+        }
+
+        if (!reservations || reservations.length === 0) {
+            return res.status(404).json({ message: 'No hay reservas para este usuario' });
+        }
+
+        res.status(200).json(reservations);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener las reservas por usuario 500' });
     }
 };
