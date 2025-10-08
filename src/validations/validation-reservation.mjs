@@ -24,13 +24,13 @@ export const validateCreateReservation = Joi.object({
             
             // Horario de funcionamiento: 8:00 AM (480 min) a 6:00 PM (1080 min)
             const openTime = 8 * 60; // 8:00 AM = 480 minutos
-            const closeTime = 18 * 60; // 6:00 PM = 1080 minutos
+            const closeTime = 22 * 60; // 6:00 PM = 1080 minutos
             
             console.log(`Validando hora: ${hour}:${minutes} (${timeInMinutes} minutos)`);
             console.log(`Rango permitido: ${openTime} - ${closeTime} minutos`);
             
             if (timeInMinutes < openTime || timeInMinutes >= closeTime) {
-                return helpers.message('La reserva debe ser entre las 8:00 AM y las 6:00 PM');
+                return helpers.message('La reserva debe ser entre las 8:00 AM y las 10:00 PM');
             }
 
             // Validar que los minutos sean múltiplos de 30
@@ -41,4 +41,9 @@ export const validateCreateReservation = Joi.object({
             return value;
         }),
     status: Joi.string().valid('pending', 'confirmed', 'cancelled').default('pending')
+});
+
+
+export const validateDeleteReservation = Joi.object({
+    id: Joi.string().hex().length(24).required()
 });

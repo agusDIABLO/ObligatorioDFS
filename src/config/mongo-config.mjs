@@ -25,7 +25,7 @@ export async function connectMongo() {
         await mongoose.connect(mongoUri, {
             serverSelectionTimeoutMS: 10000,
         });
-
+        
         // Si la conexión es exitosa, imprime mensaje en consola
         console.log("Conectado a MongoDB correctamente");
     } catch (err) {

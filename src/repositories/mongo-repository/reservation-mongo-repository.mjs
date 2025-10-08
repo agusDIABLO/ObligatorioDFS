@@ -43,8 +43,26 @@ const reservationMongoRepository = {
             console.log('Error al obtener las reservas por cliente y fecha en mongo', error);
             throw error;
         }
-    }
+    },
 
+
+    async getReservationById(id) {
+        try {
+            const reservation = await Reservation.findById(id).populate('serviceId', 'duration name').lean();
+            return reservation;
+        } catch (error) {
+            return new Error('Error al obtener la reserva por ID en mongo', error);
+        }   
+    },
+
+    async deleteReservation(id) {
+        try {
+            deletedReservation = await Reservation.findByIdAndDelete(id);
+            return deletedReservation;
+        } catch (error) {
+             return new Error('Error al eliminar la reserva en mongo', error);
+        }
+    }
 
 }
 
