@@ -82,7 +82,7 @@ const reservationMongoRepository = {
         }
     },
 
-    async getReservationByCustomer(id){
+    async getReservationsByCustomer(id){
         try {
             const reservations = await Reservation.find({customerId: id })
             .populate('serviceId', 'name duration categoryId')

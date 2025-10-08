@@ -86,8 +86,8 @@ export const getReservationByUser = async (req, res) => {
         let reservations;
 
         if (req.user.role.includes('admin')) {
-            // Si el admin pasa un userId en params, busca solo las reservas de ese usuario
-           
+                // Si el admin pasa un userId en params, busca solo las reservas de ese usuario
+
             const userId = req.params.id;
             if (userId) {
                 // Podría ser un cliente o barber, lo dejamos por el momento con cliente
@@ -97,11 +97,21 @@ export const getReservationByUser = async (req, res) => {
             }
         
         } else if (req.user.role.includes('barber')) {
-            reservations = await reservationRepository.getReservationsByBarber(req.user.id);
-        } else if (req.user.role.includes('customer')) {
+            if (req.user.id == req.params. id) {
+                reservations = await reservationRepository.getReservationsByBarber(req.user.id);   
+            }else{
+                
+            return res.status(403).json({ message: 'Rol no autorizado' });
+            }
             
+        } else if (req.user.role.includes('customer')) {
             // Solo puede ver sus propias reservas
-            reservations = await reservationRepository.getReservationsByCustomer(req.user.id);
+            if (req.user.id == req.params. id) {
+                reservations = await reservationRepository.getReservationsByCustomer(req.user.id);                
+            }else{
+
+            return res.status(403).json({ message: 'Rol no autorizado' });
+            }
         } else {
             return res.status(403).json({ message: 'Rol no autorizado' });
         }
@@ -115,6 +125,8 @@ export const getReservationByUser = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener las reservas por usuario 500' });
     }
 };
+
+
 
 
 export const getAllReservations = async (req, res) => {
