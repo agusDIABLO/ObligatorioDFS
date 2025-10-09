@@ -13,8 +13,19 @@ import { xssSanitizer } from "./middleware/sanitizer-middleware.mjs";
 const app = express();
 const PORT = process.env.PORT ?? 3000;  
 
-connectMongo();
-connectRedis();
+const startServer = async () => {
+    try {
+        await connectMongo();
+        await connectRedis();
+
+        app.listen(PORT, () => console.log(`Escuchando en el puerto: ${PORT}`));
+    } catch (err) {
+        console.error("No se pudo iniciar el servidor:", err);
+        process.exit(1);
+    }
+};
+
+startServer();
 
 app.use(express.json());
 

@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
   "name": "Sebastian Mondo",
-  "email": "pruebaadmin10@example.com",
+  "email": "pruebaadmin1230@example.com",
   "password": "12345678",
   "phone": "1234567890",
   "role": "admin"
@@ -53,11 +53,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0Z
 ### New Service - Crear nuevo servicio
 POST http://localhost:3000/api/v1/services HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTUzZjc1NzRhM2M0MTk0MWY1ODk1OCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI3QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk5MDQxMTMsImV4cCI6MTc1OTkwNzcxM30.88I4xJqGY5fsIYYrUnQziQCU8lyaplVkVb19toGB4O4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTgwNjRkNjJlOGQ2MDUxZTkxZWI0MyIsImVtYWlsIjoicHJ1ZWJhYWRtaW4xMjMwQGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NjAwMzY0MjksImV4cCI6MTc2MDA0MDAyOX0.v9A8tldXQT2GcVS68YFEC7l8m2XR9Oc69hcKYXvxD2g
 
 
 {
-    "name": "Servicio prueba 11 vsc con categoria prueba 5",
+    "name": "Servicio prueba 133 vsc con categoria prueba 5",
     "duration": 30,
     "price": 120,
     "categoryId": "68e4694f9ece24709c7e76b9"
