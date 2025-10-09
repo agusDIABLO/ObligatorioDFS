@@ -4,6 +4,7 @@ import serviceRepository from "../repositories/service-repository.mjs";
 
 export const createService = async (req, res, next) => {   
     try {
+        console.log(req.body)
         const service = req.body;
         const serviceCreado = await serviceRepository.createService(service);
         res.status(201).json({Service: serviceCreado});
