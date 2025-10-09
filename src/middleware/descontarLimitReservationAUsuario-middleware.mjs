@@ -14,7 +14,7 @@ export const descontarLimitReservationAUsuarioMiddleware = async (req, res, next
             return next(createError(403, 'Solo los clientes pueden hacer reservas'));
         }
 
-        if (customer.limitReservations <= 0) {
+        if (customer.limitReservations <= 0 && customer.plan == 'plus') {
             return next(createError(403, 'Has alcanzado el límite de reservas permitidas. No puedes hacer más reservas.'));
         }   
 
