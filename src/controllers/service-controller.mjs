@@ -9,7 +9,8 @@ export const createService = async (req, res, next) => {
         const serviceCreado = await serviceRepository.createService(service);
         res.status(201).json({Service: serviceCreado});
     } catch (error) {
-        next(createError(500, 'No se pudo crear el servicio'));
+        
+        res.status(500).json({error: 'No se pudo crear el servicio'}); 
     }
 }
 
@@ -20,11 +21,11 @@ export const getServiceById = async (req, res, next) => {
         const id  = req.params.id;
         const service = await serviceRepository.getServiceById(id);
         if (!service) {
-            return next(createError(404, 'Servicio no encontrado'));
+            res.status(404).json({error: 'No se pudo encontrar el servicio'});
         }
         res.status(200).json({Service: service});
     } catch (error) {
-        next(createError(500, 'Error al obtener el servicio'));
+        res.status(500).json({error: 'No se pudo obtener el servicio'}); 
     }   
 
 }
