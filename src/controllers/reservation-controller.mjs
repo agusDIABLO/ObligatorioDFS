@@ -52,7 +52,9 @@ export const deleteReservation = async (req, res, next) => {
         if (!reservation) {
             return next(createError(404, 'Reserva no encontrada'));
         }   
-        if (reservation.customerId.toString() != req.user.id && !req.user.role.includes('admin')) {
+        if (reservation.customerId.toString() != req.user.id && ['admin', 'customer', 'barber'].includes(req.user.role)) {
+            console.log(reservation.customerId)
+            console.log(req.user.id)
             return res.status(403).json({ message: 'No tienes permiso para eliminar esta reserva' });
         }
         await reservationRepository.deleteReservation(id);
