@@ -6,16 +6,20 @@ export const descontarLimitReservationAUsuarioMiddleware = async (req, res, next
         const customerId = req.user.id; // del token
         const customer = await userRepository.getUserById(customerId);
         if (!customer) {
-            return next(createError(400, 'Cliente no válido'));
+
+            res.status(400).json({error: 'Cliente no válido'});
+
         }
         
 
         if (!customer.role.includes('customer')) {
-            return next(createError(403, 'Solo los clientes pueden hacer reservas'));
+            
+            res.status(403).json({error:'Solo los clientes pueden hacer reservas'});
         }
 
         if (customer.limitReservations <= 0 && customer.plan == 'plus') {
-            return next(createError(403, 'Has alcanzado el límite de reservas permitidas. No puedes hacer más reservas.'));
+            
+            res.status(403).json({error:'Has alcanzado el límite de reservas permitidas. No puedes hacer más reservas.'});
         }   
 
         if (customer.plan == 'plus') {

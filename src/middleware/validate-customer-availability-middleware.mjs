@@ -10,7 +10,7 @@ export const validateCustomerAvailabilityMiddleware = async (req, res, next) => 
 
         if (!service) {
             return res.status(400).json({error: 'Servicio no válido'});
-            //return next(createError(400, 'Servicio no válido'));
+           
         }
 
         const duration = service.duration; // duración en minutos
@@ -23,7 +23,7 @@ export const validateCustomerAvailabilityMiddleware = async (req, res, next) => 
         // Verificar que la fecha sea válida
         if (isNaN(startTime.getTime())) {
             return res.status(400).json({error: 'Fecha y hora de reserva inválida'});
-            //return next(createError(400, 'Fecha y hora de reserva inválida'));
+           
         }
         
 

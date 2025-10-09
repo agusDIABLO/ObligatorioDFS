@@ -9,7 +9,7 @@ export const validateBarberAvailabilityMiddleware = async (req, res, next) => {
 
         const service = await serviceRepository.getServiceById(serviceId);
         if (!service) {
-            return next(createError(400, 'Servicio no válido'));
+           res.status(400).json({error:"Servicio no valido"});
         }
 
         const duration = service.duration; // duración en minutos
@@ -35,10 +35,10 @@ export const validateBarberAvailabilityMiddleware = async (req, res, next) => {
         });
 
         if (isOverlapping) {
-            return next(createError(400, 'El barbero no está disponible en el horario seleccionado'));
+            res.status(400).json({error:"El barbero no esta disponible en el horario seleccionado"});
         }
         next();
     } catch (error) {
-        next(createError(500, 'Error al validar la disponibilidad del barbero'));
+        res.status(500).json({error:"Error al validar la disponibilidad del barbero"});
     }
 };

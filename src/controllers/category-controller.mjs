@@ -8,7 +8,7 @@ export const createCategory = async (req, res, next) => {
         const categoryCreada = await categoryRepository.createCategory(category);
         res.status(201).json({Category: categoryCreada});
     } catch (error) {
-        next(createError(500, 'No se pudo crear la categoria'));
+        res.status(500).json({error:"No se pudo crear la categoria"});
     }
 }
 
@@ -17,10 +17,10 @@ export const getCategoryById = async (req, res, next) => {
         const _id = req.params.id;
         const category = await categoryRepository.getCategoryById(_id);
         if (!category) {
-            return next(createError(404, 'Categoria no encontrada'));
+             res.status(404).json({error:"Categoria no encontrada"});
         }
         res.status(200).json({Category: category});
     } catch (error) {
-        next(createError(500, 'No se pudo obtener la categoria'));
+        res.status(500).json({error:"No se pudo obtener la categoria"});
     }
 }
