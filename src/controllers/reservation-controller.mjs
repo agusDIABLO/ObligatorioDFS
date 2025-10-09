@@ -15,17 +15,17 @@ export const createReservation = async (req, res, next) => {
 
         const customer = await userRepository.getUserById(customerId);
         if (!customer || !customer.role.includes('customer')) {
-        return next(createError(400, 'Cliente no válido'));
+        res.status(404).json({error:"Cliente no encontrado"})
         }
         
         const barber = await userRepository.getUserById(barberId);
         if (!barber || !barber.role.includes('barber')) {
-        return next(createError(400, 'Barbero no válido'));
+        res.status(404).json({error:"Barbero no encontrado"})
         }
 
         const service = await serviceRepository.getServiceById(serviceId);
         if (!service) {
-            return next(createError(400, 'Servicio no válido'));
+            res.status(404).json({error:"Servicio no encontrado"})
         }
 
 
@@ -40,7 +40,7 @@ export const createReservation = async (req, res, next) => {
 
         res.status(201).json(nuevaReserva);
     } catch (error) {
-        next(createError(500, 'No se pudo crear la reserva'));
+        res.status(500).json({error:"No se pudo crear la reserva"})
     }
 }
 
@@ -50,7 +50,7 @@ export const deleteReservation = async (req, res, next) => {
         const { id } = req.params;
         const reservation = await reservationRepository.getReservationById(id);
         if (!reservation) {
-            return next(createError(404, 'Reserva no encontrada'));
+            res.status(404).json({error:"Reserva no encontrada"})
         }   
         if (reservation.customerId.toString() != req.user.id && ['admin', 'customer', 'barber'].includes(req.user.role)) {
             console.log(reservation.customerId)
@@ -60,7 +60,7 @@ export const deleteReservation = async (req, res, next) => {
         await reservationRepository.deleteReservation(id);
         res.status(200).json({ message: 'Reserva eliminada correctamente' });
     } catch (error) {
-        next(createError(500, 'No se pudo eliminar la reserva'));
+        res.status(500).json({error:"No se pudo eliminar la reserva"})
     }
 };
 
