@@ -5,7 +5,7 @@ import "dotenv/config";
 
 let serviceRepository;
 
-if (process.env.DB_TYPE ==   baseConstant.MONGO) {
+if (process.env.DB_TYPE == baseConstant.MONGO) {
     serviceRepository = serviceMongoRepository;
 }
 

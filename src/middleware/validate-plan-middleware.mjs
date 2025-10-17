@@ -13,7 +13,7 @@ export const validatePlanMiddleware = (...allowedPlans) => {
                     return res.status(404).json({ error: 'Usuario no encontrado' });
                 }
                 userPlan = userFromDB.plan;
-                req.user.plan = userPlan; 
+                req.user.plan = userPlan;
             }
 
             // Validamos si el plan está permitido
@@ -23,7 +23,6 @@ export const validatePlanMiddleware = (...allowedPlans) => {
 
             next();
         } catch (error) {
-            
             return res.status(500).json({ error: 'Error interno al validar el plan' });
         }
     }

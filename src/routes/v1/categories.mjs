@@ -9,15 +9,9 @@ import { validateRoleMiddleware } from '../../middleware/validate-role-middlewar
 
 const routes = express.Router();
 
-
-
-
 routes.use(authMiddleware);
 
-routes.get("/:id", validateRequest(validateGetCategoryById, reqValidate.PARAM), getCategoryById);    
-
-
+routes.get("/:id", validateRequest(validateGetCategoryById, reqValidate.PARAM), getCategoryById);
 routes.post("/", validateRoleMiddleware('admin'), validateRequest(validateCreateCategory, reqValidate.BODY), createCategory);
-
 
 export default routes;

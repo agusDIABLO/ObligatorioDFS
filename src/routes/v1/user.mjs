@@ -10,21 +10,12 @@ import reqValidate from "../../constants/request-validate-constants.mjs";
 
 const routes = express.Router();
 
-
 routes.use(authMiddleware);
 
-
-
-routes.patch("/:id/plan", 
-validateRoleMiddleware('admin', 'customer'), 
-validateRequest(validateUpdateUser, reqValidate.BODY), 
-validatePlanMiddleware('plus', 'premium'),  
-validateRequest(validateUpdateUserId, reqValidate.PARAM), updateUserPlan);
-
-
-
-
-
-
+routes.patch("/:id/plan",
+    validateRoleMiddleware('admin', 'customer'),
+    validateRequest(validateUpdateUser, reqValidate.BODY),
+    validatePlanMiddleware('plus', 'premium'),
+    validateRequest(validateUpdateUserId, reqValidate.PARAM), updateUserPlan);
 
 export default routes;

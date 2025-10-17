@@ -10,7 +10,6 @@ export const validateAuth = Joi.object({
     exp: Joi.date()
 });
 
-
 export const validateSignup = Joi.object({
     name: Joi.string().min(3).max(35).required(),
     email: Joi.string().regex(/.+@.+\..+/).required(),
@@ -24,7 +23,6 @@ export const validateLogin = Joi.object({
     email: Joi.string().regex(/.+@.+\..+/).required(),
     password: Joi.string().min(6).max(20).required()
 });
-
 
 export const validateUpdateUser = Joi.object({
     plan: Joi.string().valid('plus', 'premium')

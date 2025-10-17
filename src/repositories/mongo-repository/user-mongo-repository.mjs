@@ -2,7 +2,6 @@ import User from "../../model/user.mjs";
 
 
 const userMongoRepository = {
-
     async createUser(data) {
         try {
             const user = new User(data)
@@ -14,16 +13,14 @@ const userMongoRepository = {
         }
     },
 
-
     async getUserByEmail(data) {
         try {
             return User.findOne(({ email: data }));
-            
+
         } catch (error) {
-             throw new Error("error al obtener usuario por email en la base de datos");
+            throw new Error("error al obtener usuario por email en la base de datos");
         }
     },
-
 
     async getUserById(id) {
         try {
@@ -36,7 +33,6 @@ const userMongoRepository = {
             throw new Error("error al obtener usuario en la base de datos");
         }
     },
-
 
     async updateUser(id, data) {
         try {
@@ -56,17 +52,12 @@ const userMongoRepository = {
                 userId,
                 { $inc: { limitReservations: -1 } },
                 { new: true }
-            )} catch (error) {
+            )
+        } catch (error) {
             throw new Error("error al decrementar las reservas");
-            
-        }   
+
+        }
     }
-
-
-
-    
-
-
 }
 
 export default userMongoRepository; 

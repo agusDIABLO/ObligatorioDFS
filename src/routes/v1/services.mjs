@@ -14,8 +14,4 @@ routes.use(authMiddleware);
 routes.post("/", validateRoleMiddleware('admin', 'customer'), validateRequest(validateCreateService, reqValidate.BODY), createService);
 routes.get("/:id", validateRoleMiddleware('admin', 'customer'), validateRequest(validateServiceById, reqValidate.PARAM), getServiceById);
 
-
-
-
-
 export default routes;

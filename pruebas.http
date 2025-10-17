@@ -1,12 +1,9 @@
 ### Prueba de vida
 get http://localhost:3000/
 
-
-
 ### Signup - Crear nuevo usuario
 POST http://localhost:3000/api/v1/signup
 Content-Type: application/json
-
 {
   "name": "Sebastian Mondo",
   "email": "pruebaadmin1230@example.com",
@@ -15,47 +12,30 @@ Content-Type: application/json
   "role": "admin"
 }
 
-
-
 ### Login - Login usuario
 POST http://localhost:3000/api/v1/login
 Content-Type: application/json
-
 {
   "email": "pruebacustomer7@example.com",
   "password": "12345678"
 }
-# > {% 
-# // Parseamos JSON y guardamos token globalmente
-# const body = response.json(); 
-# client.global.set("token", body.token); 
-# %}
-
-
 
 ### New Category - Crear nueva categoria
 POST http://localhost:3000/api/v1/categories HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OTNjOWVjZTI0NzA5YzdlNzZiNyIsImVtYWlsIjoicHJ1ZWJhYWRtaW42QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk3OTk2MTIsImV4cCI6MTc1OTgwMzIxMn0.Ff7Yx5A73_GVE-o9JTRzvGFi6FQN3PAhCm6iZLGkqkQ
-
 {
     "name": "categoria prueba 5"
 }
-
-
 
 ### GetCategoryById - Obtener categoria por ID
 GET http://localhost:3000/api/v1/categories/68def45360e32e30cfdbe482 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0ZDcxNDlhZjZiZjI3ZGYwMiIsImVtYWlsIjoicHJ1ZWJhMUBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5NzgzNzAzLCJleHAiOjE3NTk3ODczMDN9.DNr6hRpcN8E4yo0EfsyYsE31fv1F21PlLqJkLPhYwiA
 
-
-
 ### New Service - Crear nuevo servicio
 POST http://localhost:3000/api/v1/services HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTgwNjRkNjJlOGQ2MDUxZTkxZWI0MyIsImVtYWlsIjoicHJ1ZWJhYWRtaW4xMjMwQGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NjAwMzY0MjksImV4cCI6MTc2MDA0MDAyOX0.v9A8tldXQT2GcVS68YFEC7l8m2XR9Oc69hcKYXvxD2g
-
-
 {
     "name": "Servicio prueba 133 vsc con categoria prueba 5",
     "duration": 30,
@@ -63,27 +43,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTgwNjRkN
     "categoryId": "68e4694f9ece24709c7e76b9"
 }
 
-
 ### GetServiceById - Obtener servicio por ID
 GET http://localhost:3000/api/v1/services/68e42d176fc054b63bd60ad3 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxZTc0ZDcxNDlhZjZiZjI3ZGYwMiIsImVtYWlsIjoicHJ1ZWJhMUBleGFtcGxlLmNvbSIsInJvbGUiOlsiY3VzdG9tZXIiXSwiaWF0IjoxNzU5NzgzNzAzLCJleHAiOjE3NTk3ODczMDN9.DNr6hRpcN8E4yo0EfsyYsE31fv1F21PlLqJkLPhYwiA
-
 
 ### Update User Plan - Actualizar plan de usuario
 PATCH http://localhost:3000/api/v1/users/68e1e30b0c9013325c4a90eb/plan HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OTNjOWVjZTI0NzA5YzdlNzZiNyIsImVtYWlsIjoicHJ1ZWJhYWRtaW42QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk3OTk2MTIsImV4cCI6MTc1OTgwMzIxMn0.Ff7Yx5A73_GVE-o9JTRzvGFi6FQN3PAhCm6iZLGkqkQ
-
 {
     "plan": "premium"
 }
-
 
 ### Create Reservation - Crear nueva reserva
 POST http://localhost:3000/api/v1/reservations HTTP/1.1
 content-type: application/json 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1OTYyYWQxMGJjN2Y0ZjY1OTgxNSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXJAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTkxMTY0MSwiZXhwIjoxNzU5OTE1MjQxfQ.DcnAkkNq31Y640jsItBCmtdPxUhf5Az-H7R9iFjdz7c
-
 {
     "barberId": "68e462c1c22460e3b9ef00c4",
     "serviceId": "68e42d176fc054b63bd60ad3",
@@ -95,28 +70,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ1OTYyY
 DELETE http://localhost:3000/api/v1/reservations/68e459fd0d9b1c4d7a7ec2b5 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTUzZjc1NzRhM2M0MTk0MWY1ODk1OCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI3QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk5MDQxMTMsImV4cCI6MTc1OTkwNzcxM30.88I4xJqGY5fsIYYrUnQziQCU8lyaplVkVb19toGB4O4
 
-
-
 ### Get Reservations By Category 
 GET http://localhost:3000/api/v1/reservations/category/68dee9d460e32e30cfdbe47f
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTUzZjc1NzRhM2M0MTk0MWY1ODk1OCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI3QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk5MDQxMTMsImV4cCI6MTc1OTkwNzcxM30.88I4xJqGY5fsIYYrUnQziQCU8lyaplVkVb19toGB4O4
-
 
 ### Get Reservations By Id
 GET http://localhost:3000/api/v1/reservations/user/68e54172e1b1b37374dc24a5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTUzZjc1NzRhM2M0MTk0MWY1ODk1OCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI3QGV4YW1wbGUuY29tIiwicm9sZSI6WyJhZG1pbiJdLCJpYXQiOjE3NTk5NjQ0MzgsImV4cCI6MTc1OTk2ODAzOH0.LTe-1ZvHO2MxxuBakxsxfGNxKhwClrdzq9FgqKFie38
 
-
 ### Get All Reservations
 GET http://localhost:3000/api/v1/reservations/all
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2OGZkOWVjZTI0NzA5YzdlNzZiNSIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI2QGV4YW1wbGUuY29tIiwicm9sZSI6WyJjdXN0b21lciJdLCJpYXQiOjE3NTk5NTM5NzgsImV4cCI6MTc1OTk1NzU3OH0.lUPUZen1OL8CTKUZuh_FgtlBWHMCu3s4h1GY9Nj_KEM
-
 
 ### Update Reservation
 PUT http://localhost:3000/api/v1/reservations/68e61f049eb1bc38c3c7634d HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDllYjNmOWMzMGJjM2I3MWRhZWViNCIsImVtYWlsIjoicm9iZXJ0bzFAZXhhbXBsZS5jb20iLCJyb2xlIjpbImN1c3RvbWVyIl0sImlhdCI6MTc1OTk1ODc5NCwiZXhwIjoxNzU5OTYyMzk0fQ.q1JUd5k12xjlxxV62XGBRYky3PWKjj5QlkDk9kyY8Bs
-
 {
     "barberId": "68e462c1c22460e3b9ef00c4",
     "serviceId": "68e42d176fc054b63bd60ad3",
@@ -124,14 +93,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDllYjNmO
     "status": "confirmed"
 }
 
-
 ### Update parcial Reservation
 PATCH http://localhost:3000/api/v1/reservations/68e61f049eb1bc38c3c7634d HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQ2MzBiYzIyNDYwZTNiOWVmMDBjOCIsImVtYWlsIjoicHJ1ZWJhY3VzdG9tZXI0QGV4YW1wbGUuY29tIiwicm9sZSI6WyJjdXN0b21lciJdLCJpYXQiOjE3NTk5NjA3MTAsImV4cCI6MTc1OTk2NDMxMH0.cyc1i5VsiQpHR_NsGekDTc63E8EFHxroC5zMdWoXzuU
-
 {
     "reservationDateTime": "2025-10-22T18:00:00.000Z"
 }
-
-
