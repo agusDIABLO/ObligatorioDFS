@@ -7,6 +7,7 @@ import v1Categorias from "./routes/v1/categories.mjs";
 import v1Servicios from "./routes/v1/services.mjs";
 import v1Usuarios from "./routes/v1/user.mjs";
 import v1Reservations from "./routes/v1/reservations.mjs";
+import v1Images from "./routes/v1/image.mjs";
 import { xssSanitizer } from "./middleware/sanitizer-middleware.mjs";
 
 
@@ -57,6 +58,10 @@ app.use("/api/v1/users", v1Usuarios);
 // RUTAS DE RESERVAS
 app.use("/api/v1/reservations", v1Reservations);
 
+
+
+// RUTAS DE IMAGENES
+app.use("/api/v1/images", v1Images);
 
 
 app.get("/", (req, res) => {

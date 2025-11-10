@@ -5,7 +5,17 @@ const reservationSchema = new mongoose.Schema({
     barberId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     serviceId: {type: mongoose.Schema.Types.ObjectId, ref: 'Service', required: true},
     reservationDateTime: {type: Date, required: true},
-    status: {type: String, enum: ['pending', 'confirmed', 'cancelled'], default: 'pending'} 
+    status: {type: String, enum: ['pending', 'confirmed', 'cancelled'], default: 'pending'},
+        imgUrl: {
+        type: String,
+        required: false,
+        validate: {
+            validator: function (v) {
+                return /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp|svg)$/i.test(v);
+            },
+            message: props => `${props.value} no es una URL de imagen válida`
+        }
+    } 
     },
 {
     timestamps: true
