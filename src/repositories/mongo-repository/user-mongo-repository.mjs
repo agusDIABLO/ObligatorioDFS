@@ -60,6 +60,15 @@ const userMongoRepository = {
             throw new Error("error al decrementar las reservas");
             
         }   
+    },
+
+    async getAllUsers() {
+        try {
+            const users = await User.find().select('-password');
+            return users;
+        } catch (error) {
+            throw new Error("error al obtener todos los usuarios de la base de datos");
+        }
     }
 
 

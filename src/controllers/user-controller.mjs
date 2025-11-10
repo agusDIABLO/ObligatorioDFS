@@ -68,3 +68,14 @@ export const updateUserPlan = async (req, res, next) => {
 }
 
 
+export const getAllUsers = async (req, res, next) => {
+    try {
+        const users = await userRepository.getAllUsers();
+        res.status(200).json({Users: users});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error: 'No se pudieron obtener los usuarios'});
+    }
+}
+
+
