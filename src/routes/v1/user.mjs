@@ -19,6 +19,7 @@ routes.use(authMiddleware);
 routes.patch("/:id/plan", 
 validateRoleMiddleware('admin', 'customer'), 
 routes.get("/all",
+validateRoleMiddleware('admin'),
 getAllUsers),
 validateRequest(validateUpdateUser, reqValidate.BODY), 
 validatePlanMiddleware('plus', 'premium'),  
