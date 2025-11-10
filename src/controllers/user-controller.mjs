@@ -79,3 +79,18 @@ export const getAllUsers = async (req, res, next) => {
 }
 
 
+export const getUserById = async (req, res, next) => {
+    try {
+        const _id = req.params.id;  
+        const user = await userRepository.getUserById(_id);
+        if (!user) {
+            return res.status(404).json({error: 'Usuario no encontrado'});
+        }
+        res.status(200).json({User: user});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error: 'No se pudo obtener el usuario'});
+    }
+}
+
+
