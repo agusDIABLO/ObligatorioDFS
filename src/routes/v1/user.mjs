@@ -17,6 +17,9 @@ routes.use(authMiddleware);
 
 
 
+routes.get("/roles/:role", getUsersByRole);
+
+
 routes.patch("/:id/plan", 
 validateRoleMiddleware('admin', 'customer'), 
 routes.get("/all",

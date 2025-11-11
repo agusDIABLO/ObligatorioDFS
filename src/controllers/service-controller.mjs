@@ -15,6 +15,17 @@ export const createService = async (req, res, next) => {
 }
 
 
+export const getAllServices = async (req, res, next) => {
+    try {
+        const services = await serviceRepository.getAllServices();
+        res.status(200).json({Services: services});
+    } catch (error) {
+        res.status(500).json({error: 'No se pudieron obtener los servicios'}); 
+    }
+}
+
+
+
 export const getServiceById = async (req, res, next) => {
      console.log('req.params:', req.params);
     try {

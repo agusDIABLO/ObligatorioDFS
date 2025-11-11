@@ -1,5 +1,5 @@
 import express from 'express';
-import { createService, getServiceById } from '../../controllers/service-controller.mjs';
+import { createService, getAllServices, getServiceById } from '../../controllers/service-controller.mjs';
 import { validateRequest } from '../../middleware/validation.middleware.mjs';
 import { validateCreateService, validateServiceById } from '../../validations/validation-service.mjs';
 import reqValidate from '../../constants/request-validate-constants.mjs';
@@ -13,7 +13,7 @@ routes.use(authMiddleware);
 
 routes.post("/", validateRoleMiddleware('admin', 'customer'), validateRequest(validateCreateService, reqValidate.BODY), createService);
 routes.get("/:id", validateRoleMiddleware('admin', 'customer'), validateRequest(validateServiceById, reqValidate.PARAM), getServiceById);
-
+routes.get("/all", validateRoleMiddleware('admin', 'customer'), getAllServices);
 
 
 

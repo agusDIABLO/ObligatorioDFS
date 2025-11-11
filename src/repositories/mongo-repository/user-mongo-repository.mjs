@@ -1,3 +1,4 @@
+import { getUsersByRole } from "../../controllers/user-controller.mjs";
 import User from "../../model/user.mjs";
 
 
@@ -13,6 +14,17 @@ const userMongoRepository = {
             throw new Error("no se pudo crear el usuario en la base de datos");
         }
     },
+
+
+    async getUsersByRole(role) {
+        try {
+            const users = await User.find({ role: role }).select('-password');
+            return users;
+        } catch (error) {
+            throw new Error("error al obtener usuarios por rol en la base de datos");
+        }
+    },
+
 
 
     async getUserByEmail(data) {

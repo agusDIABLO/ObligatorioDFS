@@ -79,6 +79,18 @@ export const getAllUsers = async (req, res, next) => {
 }
 
 
+export const getUsersByRole = async (req, res, next) => {
+    try {
+        const role = req.params.role;
+        const users = await userRepository.getUsersByRole(role);
+        res.status(200).json({Users: users});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error: 'No se pudieron obtener los usuarios por rol'});
+    }
+}
+
+
 export const getUserById = async (req, res, next) => {
     try {
         const _id = req.params.id;  
