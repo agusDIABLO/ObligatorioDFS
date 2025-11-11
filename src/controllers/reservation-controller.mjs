@@ -94,6 +94,7 @@ export const getReservationByUser = async (req, res) => {
             if (userId) {
                 // Podría ser un cliente o barber, lo dejamos por el momento con cliente
                 reservations = await reservationRepository.getReservationsByCustomer(userId);
+                
             } else {
                 return res.status(400).json({ message: 'Debe proporcionar un userId para buscar' });
             }

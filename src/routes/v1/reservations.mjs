@@ -40,10 +40,9 @@ routes.delete("/:id", validateRoleMiddleware('customer', 'admin'), validateReque
 routes.get("/category/:id", validateRoleMiddleware('admin'), validateRequest(validateReservationByCategory, reqValidate.PARAM), getReservationByCategory);
 
 
-routes.get("/user/:id", validateRoleMiddleware('customer','admin','barber'), getReservationByUser);
+routes.get("/user/:id", getReservationByUser);
 
-// dividir el getbyuser
-//routes.get("/user/:id", validateRoleMiddleware('admin','barber'), getReservationByBarber);
+
 
 
 
