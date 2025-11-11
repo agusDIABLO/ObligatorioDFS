@@ -28,6 +28,13 @@ const startServer = async () => {
 
 startServer();
 
+
+// 🛠 configuración CORS
+app.use(cors({
+  origin: ["http://localhost:5176", "https://obligatorio-dfs-inky.vercel.app"],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 
