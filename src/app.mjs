@@ -9,6 +9,7 @@ import v1Usuarios from "./routes/v1/user.mjs";
 import v1Reservations from "./routes/v1/reservations.mjs";
 import v1Images from "./routes/v1/image.mjs";
 import { xssSanitizer } from "./middleware/sanitizer-middleware.mjs";
+import cors from "cors";
 
 
 const app = express();
