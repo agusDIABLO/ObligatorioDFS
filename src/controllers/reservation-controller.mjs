@@ -45,6 +45,20 @@ export const createReservation = async (req, res, next) => {
 }
 
 
+export const getReservationById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const reservation = await reservationRepository.getReservationById(id);
+        if (!reservation) {
+            return res.status(404).json({error:"Reserva no encontrada"})
+        }
+        res.status(200).json(reservation);
+    } catch (error) {
+        res.status(500).json({error:"Error al obtener la reserva"})
+    }
+};
+
+
 export const deleteReservation = async (req, res, next) => {
     try {
         const { id } = req.params;

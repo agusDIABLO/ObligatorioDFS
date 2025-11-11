@@ -16,7 +16,8 @@ import {
     getReservationByUser,
     getAllReservations,
     updateReservation,
-    parcialUpdateReservation 
+    parcialUpdateReservation, 
+    getReservationById
 } from '../../controllers/reservation-controller.mjs';
 
 
@@ -24,6 +25,9 @@ const routes = express.Router();
 
 
 routes.use(authMiddleware);
+
+
+routes.get("/reservation/:id", getReservationById);
 
 routes.post("/",validateRoleMiddleware('customer', 'admin'),
 validateRequest(validateCreateReservation, reqValidate.BODY),   
