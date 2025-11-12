@@ -98,51 +98,28 @@ export const getReservationByCategory = async (req, res, next) => {
 
 
 export const getReservationByUser = async (req, res) => {
-    try {
-        let reservations;
+  try {
+    const { id: paramId } = req.params;
+    const { role, id: userId } = req.user;
 
-        if (req.user.role.includes('admin')) {
-                // Si el admin pasa un userId en params, busca solo las reservas de ese usuario
-
-            const userId = req.params.id;
-            if (userId) {
-                // Podría ser un cliente o barber, lo dejamos por el momento con cliente
-                reservations = await reservationRepository.getReservationsByCustomer(userId);
-                
-            } else {
-                return res.status(400).json({ message: 'Debe proporcionar un userId para buscar' });
-            }
-        
-        } else if (req.user.role.includes('barber')) {
-            if (req.user.id == req.params. id) {
-                reservations = await reservationRepository.getReservationsByBarber(req.user.id);   
-            }else{
-                
-            return res.status(403).json({ message: 'Rol no autorizado' });
-            }
-            
-        } else if (req.user.role.includes('customer')) {
-            // Solo puede ver sus propias reservas
-            if (req.user.id == req.params. id) {
-                reservations = await reservationRepository.getReservationsByCustomer(req.user.id);                
-            }else{
-
-            return res.status(403).json({ message: 'Rol no autorizado' });
-            }
-        } else {
-            return res.status(403).json({ message: 'Rol no autorizado' });
-        }
-
-        if (!reservations || reservations.length === 0) {
-            return res.status(404).json({ message: 'No hay reservas para este usuario' });
-        }
-
-        res.status(200).json(reservations);
-    } catch (error) {
-        res.status(500).json({ message: 'Error al obtener las reservas por usuario 500' });
+    // Solo puede consultar sus propias reservas
+    if (userId !== paramId) {
+      return res.status(403).json({ message: "Solo puedes ver tus propias reservas" });
     }
-};
 
+    // Obtener reservas
+    const reservations = await reservationRepository.getReservationsByCustomer(userId);
+
+    if (!reservations || reservations.length === 0) {
+      return res.status(404).json({ message: "No hay reservas para este usuario" });
+    }
+
+    res.status(200).json(reservations);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al obtener las reservas del usuario" });
+  }
+};
 
 
 

@@ -28,6 +28,7 @@ routes.use(authMiddleware);
 
 
 routes.get("/reservation/:id", getReservationById);
+routes.get("/user/:id", getReservationByUser);
 
 routes.post("/",validateRoleMiddleware('customer', 'admin'),
 validateRequest(validateCreateReservation, reqValidate.BODY),   
@@ -44,7 +45,6 @@ routes.delete("/:id", validateRoleMiddleware('customer', 'admin'), validateReque
 routes.get("/category/:id", validateRoleMiddleware('admin'), validateRequest(validateReservationByCategory, reqValidate.PARAM), getReservationByCategory);
 
 
-routes.get("/user/:id", getReservationByUser);
 
 
 
