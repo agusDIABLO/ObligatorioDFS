@@ -39,7 +39,10 @@ export const validateCreateReservation = Joi.object({
             
             return value;
         }),
-    status: Joi.string().valid('pending', 'confirmed', 'cancelled').default('pending')
+    status: Joi.string().valid('pending', 'confirmed', 'cancelled').default('pending'),
+    imgUrl: Joi.string().uri().pattern(/^https?:\/\/.+\.(jpg|jpeg|png|gif|webp|svg)$/i).optional().messages({
+        "string.pattern.base": "La URL de la imagen no es válida"
+    })
 });
 
 
