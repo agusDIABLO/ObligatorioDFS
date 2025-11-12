@@ -30,7 +30,6 @@ validateRoleMiddleware('admin','customer','barber'), // cambiar luego a solo adm
 getUserById
 ),
 validateRequest(validateUpdateUser, reqValidate.BODY), 
-validatePlanMiddleware('plus', 'premium'),  
 validateRequest(validateUpdateUserId, reqValidate.PARAM), updateUserPlan);
 
 
