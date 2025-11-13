@@ -1,9 +1,8 @@
-import { createError } from "../error/create-error.mjs";    
 import serviceRepository from "../repositories/service-repository.mjs";
+
 
 export const createService = async (req, res, next) => {   
     try {
-        console.log(req.body)
         const service = req.body;
         const serviceCreado = await serviceRepository.createService(service);
         res.status(201).json({Service: serviceCreado});
@@ -13,7 +12,6 @@ export const createService = async (req, res, next) => {
     }
 }
 
-
 export const getAllServices = async (req, res, next) => {
     try {
         const services = await serviceRepository.getAllServices();
@@ -22,8 +20,6 @@ export const getAllServices = async (req, res, next) => {
         res.status(500).json({error: 'No se pudieron obtener los servicios'}); 
     }
 }
-
-
 
 export const getServiceById = async (req, res, next) => {
      console.log('req.params:', req.params);

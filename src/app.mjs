@@ -16,18 +16,16 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;  
 
 const startServer = async () => {
-    try {
-        await connectMongo();
-        await connectRedis();
+  try {
+    await connectMongo();
+    await connectRedis();
 
-        app.listen(PORT, () => console.log(`Escuchando en el puerto: ${PORT}`));
-    } catch (err) {
-        console.error("No se pudo iniciar el servidor:", err);
-        process.exit(1);
-    }
+    app.listen(PORT, () => console.log(`Escuchando en el puerto: ${PORT}`));
+  } catch (err) {
+    console.error("No se pudo iniciar el servidor:", err);
+    process.exit(1);
+  }
 };
-
-startServer();
 
 
 // 🛠 configuración CORS
@@ -85,7 +83,5 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(PORT, () => console.log(`Escuchando en el puerto: ${PORT}`));
-
-
-app.use
+// Start the server after middleware and routes are registered
+startServer();
