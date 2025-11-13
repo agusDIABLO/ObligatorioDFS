@@ -31,10 +31,17 @@ startServer();
 
 
 // 🛠 configuración CORS
+//app.use(cors({
+  //origin: ["http://localhost:5176", "https://obligatorio-dfs-inky.vercel.app"],
+  //credentials: true,
+//}));
+
 app.use(cors({
   origin: ["http://localhost:5176", "https://obligatorio-dfs-inky.vercel.app"],
-  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
 
 //app.use(express.json());
 app.use(express.json({ limit: '20mb' }));
