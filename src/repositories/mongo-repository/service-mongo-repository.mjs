@@ -23,13 +23,14 @@ const serviceMongoRepository = {
             throw new Error("error al obtener el servicio en la base de datos");
         }
     },
-    
+
     async getAllServices() {
         try {
-            const services = await Service.find();
+            const services = await Service.find()
+                .populate('serviceId', 'name duration price');
             return services;
         } catch (error) {
-            throw new Error('Error al obtener todos los servicios de la base de datos');
+            throw new Error('Error al obtener todas las servicios en mongo', error);
         }
     },
 
