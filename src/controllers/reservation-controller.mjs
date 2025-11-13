@@ -8,10 +8,8 @@ import serviceRepository from "../repositories/service-repository.mjs";
 
 export const createReservation = async (req, res, next) => {   
     try {
-        const { barberId, serviceId, reservationDateTime, status, imgUrl } = req.body; //agregamos imgUrl
+        const { barberId, serviceId, reservationDateTime, status, imgUrl, publicId } = req.body; //agregamos imgUrl y publicId 
         const customerId = req.user.id; // del token
-        
-        
 
         const customer = await userRepository.getUserById(customerId);
         if (!customer || !customer.role.includes('customer')) {
@@ -28,23 +26,21 @@ export const createReservation = async (req, res, next) => {
             res.status(404).json({error:"Servicio no encontrado"})
         }
 
-
         const nuevaReserva = await reservationRepository.createReservation({
             customerId,
             barberId,
             serviceId,
             reservationDateTime,
             status,
-            imgUrl // guardamos imgUrl
+            imgUrl, // guardamos imgUrl
+            publicId // guardamos publicId
         });
-
 
         res.status(201).json(nuevaReserva);
     } catch (error) {
         res.status(500).json({error:"No se pudo crear la reserva"})
     }
 }
-
 
 export const getReservationById = async (req, res, next) => {
     try {
