@@ -13,7 +13,7 @@ routes.use(authMiddleware);
 
 routes.post("/", validateRoleMiddleware('admin', 'customer'), validateRequest(validateCreateService, reqValidate.BODY), createService);
 routes.get("/:id", validateRoleMiddleware('admin', 'customer'), validateRequest(validateServiceById, reqValidate.PARAM), getServiceById);
-routes.get("/all", getAllServices);
+routes.get("/all", validateRoleMiddleware('admin', 'customer'), getAllServices);
 
 
 
