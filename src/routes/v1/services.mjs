@@ -9,7 +9,7 @@ import { validateRoleMiddleware } from '../../middleware/validate-role-middlewar
 
 const routes = express.Router();
 
-//routes.use(authMiddleware);
+routes.use(authMiddleware);
 
 routes.post("/", validateRoleMiddleware('admin', 'customer'), validateRequest(validateCreateService, reqValidate.BODY), createService);
 routes.get("/:id", validateRoleMiddleware('admin', 'customer'), validateRequest(validateServiceById, reqValidate.PARAM), getServiceById);
