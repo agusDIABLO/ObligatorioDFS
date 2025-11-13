@@ -31,7 +31,7 @@ routes.get("/reservation/:id", getReservationById);
 routes.get("/user/:id", getReservationByUser);
 
 routes.post("/",validateRoleMiddleware('customer', 'admin'),
-//validateRequest(validateCreateReservation, reqValidate.BODY),   
+validateRequest(validateCreateReservation, reqValidate.BODY),   
 validateReservationTimeMiddleware,
 validateCustomerAvailabilityMiddleware,
 validateBarberAvailabilityMiddleware,

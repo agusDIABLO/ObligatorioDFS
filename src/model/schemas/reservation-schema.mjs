@@ -8,13 +8,7 @@ const reservationSchema = new mongoose.Schema({
     status: {type: String, enum: ['pending', 'confirmed', 'cancelled'], default: 'pending'},
         imgUrl: {
         type: String,
-        required: false,
-        validate: {
-            validator: function (v) {
-                return /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp|svg)$/i.test(v);
-            },
-            message: props => `${props.value} no es una URL de imagen válida`
-        }
+        required: true
     } 
     },
 {
