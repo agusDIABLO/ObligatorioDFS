@@ -13,25 +13,34 @@ const routes = express.Router();
 
 
 
+// Middleware global: todas las rutas requieren autenticación
 routes.use(authMiddleware);
 
-
-
+// Obtener usuarios por rol
 routes.get("/roles/:role", getUsersByRole);
 
+// Actualizar plan de usuario
+routes.patch(
+  "/:id/plan",
+  validateRoleMiddleware('admin', 'customer'),
+  validateRequest(validateUpdateUserId, "params"),
+  validateRequest(validateUpdateUser, "body"),
+  updateUserPlan 
+);
 
-routes.patch("/:id/plan", 
-validateRoleMiddleware('admin', 'customer'), 
-routes.get("/all",
-validateRoleMiddleware('admin'),
-getAllUsers),
-routes.get("/user/:id",
-validateRoleMiddleware('admin','customer','barber'), // cambiar luego a solo admin
-getUserById
-),
-validateRequest(validateUpdateUser, reqValidate.BODY), 
-validateRequest(validateUpdateUserId, reqValidate.PARAM), updateUserPlan);
+// Obtener todos los usuarios (solo admin)
+routes.get(
+  "/all",
+  validateRoleMiddleware('admin'),
+  getAllUsers
+);
 
+// Obtener usuario por ID (admin, customer, barber)
+routes.get(
+  "/user/:id",
+  validateRoleMiddleware('admin', 'customer', 'barber'),
+  getUserById
+);
 
 
 
