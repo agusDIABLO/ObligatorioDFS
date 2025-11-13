@@ -27,7 +27,6 @@ const serviceMongoRepository = {
     async getAllServices() {
         try {
             const services = await Service.find()
-                .populate('serviceId', 'name duration price');
             return services;
         } catch (error) {
             throw new Error('Error al obtener todas las servicios en mongo', error);
