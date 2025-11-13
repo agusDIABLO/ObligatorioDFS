@@ -40,6 +40,12 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
+// Ensure preflight OPTIONS requests are handled and return the CORS headers
+app.options('*', cors({
+  origin: ["http://localhost:5176", "https://obligatorio-dfs-inky.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
 //app.use(express.json());
 app.use(express.json({ limit: '20mb' }));
