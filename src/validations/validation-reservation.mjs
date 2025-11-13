@@ -40,7 +40,8 @@ export const validateCreateReservation = Joi.object({
             return value;
         }),
     status: Joi.string().valid('pending', 'confirmed', 'cancelled').default('pending'),
-    imgUrl: Joi.string()
+    imgUrl: Joi.string(),
+    publicId: Joi.string()
 });
 
 
