@@ -35,7 +35,7 @@ const startServer = async () => {
 //}));
 
 app.use(cors({
-  origin: ["http://localhost:5176", "https://obligatorio-dfs-inky.vercel.app"],
+  origin: ["http://localhost:5176", "https://obligatorio-dfs-front.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
